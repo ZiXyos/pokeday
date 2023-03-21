@@ -7,18 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		107E32EC29CA07680059F22B /* pokedexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E32EB29CA07680059F22B /* pokedexApp.swift */; };
+		107E32EC29CA07680059F22B /* pokedayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E32EB29CA07680059F22B /* pokedayApp.swift */; };
 		107E32EE29CA07680059F22B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E32ED29CA07680059F22B /* ContentView.swift */; };
 		107E32F029CA076A0059F22B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 107E32EF29CA076A0059F22B /* Assets.xcassets */; };
 		107E32F329CA076A0059F22B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 107E32F229CA076A0059F22B /* Preview Assets.xcassets */; };
+		107E32FB29CA07AA0059F22B /* client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E32FA29CA07AA0059F22B /* client.swift */; };
+		107E32FD29CA0A990059F22B /* http-client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E32FC29CA0A990059F22B /* http-client.swift */; };
+		107E330029CA1A5A0059F22B /* pokemon.ressource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E32FF29CA1A5A0059F22B /* pokemon.ressource.swift */; };
+		107E330329CA1CED0059F22B /* pokemon.res.dto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E330229CA1CED0059F22B /* pokemon.res.dto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		107E32E829CA07680059F22B /* pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		107E32EB29CA07680059F22B /* pokedexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pokedexApp.swift; sourceTree = "<group>"; };
+		107E32E829CA07680059F22B /* pokeday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pokeday.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		107E32EB29CA07680059F22B /* pokedayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pokedayApp.swift; sourceTree = "<group>"; };
 		107E32ED29CA07680059F22B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		107E32EF29CA076A0059F22B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		107E32F229CA076A0059F22B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		107E32FA29CA07AA0059F22B /* client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = client.swift; sourceTree = "<group>"; };
+		107E32FC29CA0A990059F22B /* http-client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "http-client.swift"; sourceTree = "<group>"; };
+		107E32FF29CA1A5A0059F22B /* pokemon.ressource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pokemon.ressource.swift; sourceTree = "<group>"; };
+		107E330229CA1CED0059F22B /* pokemon.res.dto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pokemon.res.dto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,7 +43,8 @@
 		107E32DF29CA07680059F22B = {
 			isa = PBXGroup;
 			children = (
-				107E32EA29CA07680059F22B /* pokedex */,
+				107E32F929CA078F0059F22B /* ApiSdk */,
+				107E32EA29CA07680059F22B /* pokeday */,
 				107E32E929CA07680059F22B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,20 +52,20 @@
 		107E32E929CA07680059F22B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				107E32E829CA07680059F22B /* pokedex.app */,
+				107E32E829CA07680059F22B /* pokeday.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		107E32EA29CA07680059F22B /* pokedex */ = {
+		107E32EA29CA07680059F22B /* pokeday */ = {
 			isa = PBXGroup;
 			children = (
-				107E32EB29CA07680059F22B /* pokedexApp.swift */,
+				107E32EB29CA07680059F22B /* pokedayApp.swift */,
 				107E32ED29CA07680059F22B /* ContentView.swift */,
 				107E32EF29CA076A0059F22B /* Assets.xcassets */,
 				107E32F129CA076A0059F22B /* Preview Content */,
 			);
-			path = pokedex;
+			path = pokeday;
 			sourceTree = "<group>";
 		};
 		107E32F129CA076A0059F22B /* Preview Content */ = {
@@ -67,12 +76,39 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		107E32F929CA078F0059F22B /* ApiSdk */ = {
+			isa = PBXGroup;
+			children = (
+				107E330129CA1CDF0059F22B /* dto */,
+				107E32FE29CA1A340059F22B /* ressources */,
+				107E32FA29CA07AA0059F22B /* client.swift */,
+				107E32FC29CA0A990059F22B /* http-client.swift */,
+			);
+			path = ApiSdk;
+			sourceTree = "<group>";
+		};
+		107E32FE29CA1A340059F22B /* ressources */ = {
+			isa = PBXGroup;
+			children = (
+				107E32FF29CA1A5A0059F22B /* pokemon.ressource.swift */,
+			);
+			path = ressources;
+			sourceTree = "<group>";
+		};
+		107E330129CA1CDF0059F22B /* dto */ = {
+			isa = PBXGroup;
+			children = (
+				107E330229CA1CED0059F22B /* pokemon.res.dto.swift */,
+			);
+			path = dto;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		107E32E729CA07680059F22B /* pokedex */ = {
+		107E32E729CA07680059F22B /* pokeday */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 107E32F629CA076A0059F22B /* Build configuration list for PBXNativeTarget "pokedex" */;
+			buildConfigurationList = 107E32F629CA076A0059F22B /* Build configuration list for PBXNativeTarget "pokeday" */;
 			buildPhases = (
 				107E32E429CA07680059F22B /* Sources */,
 				107E32E529CA07680059F22B /* Frameworks */,
@@ -82,9 +118,9 @@
 			);
 			dependencies = (
 			);
-			name = pokedex;
+			name = pokeday;
 			productName = pokedex;
-			productReference = 107E32E829CA07680059F22B /* pokedex.app */;
+			productReference = 107E32E829CA07680059F22B /* pokeday.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +138,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 107E32E329CA07680059F22B /* Build configuration list for PBXProject "pokedex" */;
+			buildConfigurationList = 107E32E329CA07680059F22B /* Build configuration list for PBXProject "pokeday" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +151,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				107E32E729CA07680059F22B /* pokedex */,
+				107E32E729CA07680059F22B /* pokeday */,
 			);
 		};
 /* End PBXProject section */
@@ -137,8 +173,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				107E32FD29CA0A990059F22B /* http-client.swift in Sources */,
+				107E32FB29CA07AA0059F22B /* client.swift in Sources */,
 				107E32EE29CA07680059F22B /* ContentView.swift in Sources */,
-				107E32EC29CA07680059F22B /* pokedexApp.swift in Sources */,
+				107E330029CA1A5A0059F22B /* pokemon.ressource.swift in Sources */,
+				107E330329CA1CED0059F22B /* pokemon.res.dto.swift in Sources */,
+				107E32EC29CA07680059F22B /* pokedayApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,10 +306,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"pokedex/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"pokeday/Preview Content\"";
 				DEVELOPMENT_TEAM = 4QL9TPHMX5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Pokeday's";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -280,7 +322,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.zixyos.pokedex;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zixyos.pokeday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -295,10 +337,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"pokedex/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"pokeday/Preview Content\"";
 				DEVELOPMENT_TEAM = 4QL9TPHMX5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Pokeday's";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -309,7 +353,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.zixyos.pokedex;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zixyos.pokeday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -320,7 +364,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		107E32E329CA07680059F22B /* Build configuration list for PBXProject "pokedex" */ = {
+		107E32E329CA07680059F22B /* Build configuration list for PBXProject "pokeday" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				107E32F429CA076A0059F22B /* Debug */,
@@ -329,7 +373,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		107E32F629CA076A0059F22B /* Build configuration list for PBXNativeTarget "pokedex" */ = {
+		107E32F629CA076A0059F22B /* Build configuration list for PBXNativeTarget "pokeday" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				107E32F729CA076A0059F22B /* Debug */,
