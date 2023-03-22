@@ -13,7 +13,7 @@ struct ClientOptions {
 	var apiVersion: String?;
 }
 
-class Client {
+class PokeSdkClient {
 	
 	private let httpClient: HttpClient;
 	
