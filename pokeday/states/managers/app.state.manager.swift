@@ -28,7 +28,6 @@ protocol AppStateManager_P {
 
 struct AppStateManager: AppStateManager_P {
 	
-	
 	func getDefault(_ key: UserDefaultsKeys) -> Bool {
 		return UserDefaults.standard.bool(forKey: key.defaultKey());
 	}
