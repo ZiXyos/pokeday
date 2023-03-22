@@ -12,7 +12,7 @@ struct pokedexApp: App {
 	
 	let client: PokeSdkClient;
 	private var nav: AppNavigation;
-	private var appService: StateServices_P = AppState();
+	private var appService: StateServices_P;
 
     var body: some Scene {
 		WindowGroup {
@@ -25,6 +25,8 @@ struct pokedexApp: App {
 	init() {
 
 		let clientOptions: ClientOptions = ClientOptions();
+
+		self.appService = AppState();
 		self.client = PokeSdkClient(clientOptions: clientOptions);
 		self.nav = AppNavigation(stateService: self.appService);
 	}
