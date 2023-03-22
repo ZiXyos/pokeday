@@ -19,6 +19,7 @@
 		107E330D29CAB0380059F22B /* login.view.model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E330C29CAB0380059F22B /* login.view.model.swift */; };
 		107E330F29CAC9B10059F22B /* app.navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E330E29CAC9B10059F22B /* app.navigation.swift */; };
 		107E331129CACDE80059F22B /* auth.navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E331029CACDE80059F22B /* auth.navigation.swift */; };
+		107E331529CAD4E80059F22B /* app.state.manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E331429CAD4E80059F22B /* app.state.manager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		107E330C29CAB0380059F22B /* login.view.model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = login.view.model.swift; sourceTree = "<group>"; };
 		107E330E29CAC9B10059F22B /* app.navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = app.navigation.swift; sourceTree = "<group>"; };
 		107E331029CACDE80059F22B /* auth.navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = auth.navigation.swift; sourceTree = "<group>"; };
+		107E331429CAD4E80059F22B /* app.state.manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = app.state.manager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 		107E32EA29CA07680059F22B /* pokeday */ = {
 			isa = PBXGroup;
 			children = (
+				107E331229CAD4BB0059F22B /* states */,
 				107E330529CAAF3C0059F22B /* navigations */,
 				107E330429CAAF1D0059F22B /* views */,
 				107E32EB29CA07680059F22B /* pokedayApp.swift */,
@@ -163,6 +166,22 @@
 			path = models;
 			sourceTree = "<group>";
 		};
+		107E331229CAD4BB0059F22B /* states */ = {
+			isa = PBXGroup;
+			children = (
+				107E331329CAD4C20059F22B /* managers */,
+			);
+			path = states;
+			sourceTree = "<group>";
+		};
+		107E331329CAD4C20059F22B /* managers */ = {
+			isa = PBXGroup;
+			children = (
+				107E331429CAD4E80059F22B /* app.state.manager.swift */,
+			);
+			path = managers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -235,6 +254,7 @@
 			files = (
 				107E32FD29CA0A990059F22B /* http-client.swift in Sources */,
 				107E32FB29CA07AA0059F22B /* client.swift in Sources */,
+				107E331529CAD4E80059F22B /* app.state.manager.swift in Sources */,
 				107E330D29CAB0380059F22B /* login.view.model.swift in Sources */,
 				107E32EE29CA07680059F22B /* ContentView.swift in Sources */,
 				107E330029CA1A5A0059F22B /* pokemon.ressource.swift in Sources */,
