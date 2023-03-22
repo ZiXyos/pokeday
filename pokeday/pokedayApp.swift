@@ -10,7 +10,7 @@ import SwiftUI;
 @main
 struct pokedexApp: App {
 	
-	let client: Client;
+	let client: PokeSdkClient;
 
     var body: some Scene {
         WindowGroup {
@@ -20,6 +20,6 @@ struct pokedexApp: App {
 	
 	init() {
 		let clientOptions: ClientOptions = ClientOptions();
-		self.client = Client(clientOptions: clientOptions);
+		self.client = PokeSdkClient(clientOptions: clientOptions);
 	}
 }
