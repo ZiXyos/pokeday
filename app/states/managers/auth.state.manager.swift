@@ -26,6 +26,17 @@ struct AuthStateManager: AuthStateManager_P {
 	
 	public func login(token: String) {
 		self.authState.isLogged.toggle();
+		self.appStateManager.setDefault(
+			.isAuth,
+			value: self.authState.isLogged
+		);
+		
+		self.authState.usertoken = token;
+		self.appStateManager.setDefault(
+			.token,
+			value: self.authState.usertoken!
+		);
+		
 	}
 	
 	public func logout() {
