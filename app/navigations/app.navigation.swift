@@ -25,6 +25,10 @@ class AppNavigation: ObservableObject {
 		return AuthNavigation(stateService: appServices);
 	}();
 	
+	lazy private var tabNav: TabNavigation = {
+		return TabNavigation(stateService: appServices);
+	}();
+	
 	init(stateService: StateServices_P) {
 		self.appServices = stateService;
 		self.setBindings();
@@ -51,8 +55,7 @@ class AppNavigation: ObservableObject {
 	}
 	
 	@ViewBuilder public func tabScreen() -> some View {
-		
-			Text("Tab View");
+		TabNavigationView(nav: self.tabNav);
 	}
 }
 
