@@ -19,11 +19,31 @@ class AppNavigation: ObservableObject {
 	
 	@Published var screen: AppNavigationScreen = .auth;
 	private var anyCancellable = Set<AnyCancellable>();
+	private var appServices: StateServices_P;
+	
 	lazy private var authNav: AuthNavigation = {
-		return AuthNavigation();
+		return AuthNavigation(stateService: appServices);
 	}();
 	
-	init() {}
+	init(stateService: StateServices_P) {
+		self.appServices = stateService;
+		self.setBindings();
+	}
+	
+	public func setBindings() {
+		   
+		   self.appServices.authManager.authState.$isLogged.sink {
+			   
+			   [weak self] (value) in
+			   
+			   if value == true {
+				   
+				   self?.screen = .tab;
+			   } else {
+				   self?.screen = .auth;
+			   }
+		   }.store(in: &self.anyCancellable)
+	   }
 	
 	@ViewBuilder public func authScreen() -> some View {
 		

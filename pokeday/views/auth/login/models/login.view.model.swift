@@ -5,18 +5,22 @@
 //  Created by Ktchoumh on 3/22/23.
 //
 
-import Foundation
+import Foundation;
+import Combine;
 
 
-public class LoginViewModel: ObservableObject {
+class LoginViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	
-	@Published var isAuth: Bool = false;
+	public override init(services: StateServices_P) {
+
+		super.init(services: services);
+	}
 	
 	public func loginWithUsername(
 		username: String,
 		password: String
 	) -> Void {
-		
+		self.services.authManager.login(token: "user-token");
 		print("[LOG]: Logging In with Username !!!");
 	}
 	

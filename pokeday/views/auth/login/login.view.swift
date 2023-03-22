@@ -44,7 +44,7 @@ struct LoginView: View {
 struct login_view_Previews: PreviewProvider {
     static var previews: some View {
         LoginView(
-			viewModel: LoginViewModel()
+			viewModel: LoginViewModel(services: AppState())
 		);
     }
 }

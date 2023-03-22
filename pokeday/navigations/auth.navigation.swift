@@ -11,9 +11,15 @@ import Combine;
 
 class AuthNavigation: ObservableObject {
 	
+	private var stateService: StateServices_P;
+	
+	init(stateService: StateServices_P) {
+		self.stateService = stateService;
+	}
+	
 	@ViewBuilder public func loginScreen() -> some View {
 		LoginView(
-			viewModel: LoginViewModel()
+			viewModel: LoginViewModel(services: self.stateService)
 		);
 	}
 	
@@ -32,13 +38,5 @@ struct AuthNAvigationView: View {
 		NavigationStack {
 			self.nav.loginScreen();
 		}
-    }
-}
-
-struct auth_navigation_Previews: PreviewProvider {
-    static var previews: some View {
-        AuthNAvigationView(
-			nav: AuthNavigation()
-		)
     }
 }
