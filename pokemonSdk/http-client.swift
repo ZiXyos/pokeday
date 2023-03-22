@@ -32,8 +32,8 @@ public enum RequestType: String {
 struct RequestOptions {
 	
 	var path: String;
-	var method = RequestType.GET;
-	var header: [String: String] = ["" : ""];
+	var method: RequestType = RequestType.GET;
+	var params: Optional<[URLQueryItem]>;
 }
 
 class HttpClient {
@@ -46,22 +46,18 @@ class HttpClient {
 	
 	private func configureMethod(
 		url: URL,
-		header: [String : String],
-		method: RequestType
+		method: RequestType,
+		params: [URLQueryItem]
 	) throws -> URLRequest {
 		
 		var req: URLRequest = URLRequest(url: url);
 		req.httpMethod = method.getDefault();
 		
-		for head in header {
-			
-			req.addValue(head.value, forHTTPHeaderField: head.key);
-		}
-		
 		req.addValue("application/json", forHTTPHeaderField: "Content-Type");
 		req.addValue("application/json", forHTTPHeaderField: "Accept");
 		req.addValue("pokedex-sdk/v1", forHTTPHeaderField: "User-Agent");
-		
+		req.url?.append(queryItems: params);
+
 		return req;
 	}
 	
@@ -77,10 +73,8 @@ class HttpClient {
 		
 		let req = try self.configureMethod(
 			url: url,
-			header: requestOptions?.header ?? ["": ""],
-			method: RequestType(
-				rawValue: (requestOptions?.method)!.rawValue
-			) ?? .GET
+			method: requestOptions!.method,
+			params: requestOptions?.params ?? []
 		);
 		
 		let (data, res) = try await urlSession.data(for: req);
@@ -95,11 +89,15 @@ class HttpClient {
 	}
 	
 	public func get<T: Codable>(
-		route: String
+		route: String,
+		params: Optional<[URLQueryItem]>
 	) async throws -> T {
 		
 		let ret: T = try await self.req(
-			requestOptions: RequestOptions(path: route)
+			requestOptions: RequestOptions(
+				path: route,
+				params: params
+			)
 		);
 		
 		return ret;

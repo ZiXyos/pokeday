@@ -19,7 +19,8 @@ class PokemonRessources {
 	public func getPokemonById(pokemonId: String) async throws -> PokemonResDto {
 		
 		let res: PokemonResDto = try await self.httpClient.get(
-			route: "pokemon/" + pokemonId
+			route: "pokemon/" + pokemonId,
+			params: nil
 		);
 		return res;
 	}
@@ -27,8 +28,22 @@ class PokemonRessources {
 	public func getPokemonByName(pokemonName: String) async throws -> PokemonResDto {
 		
 		let res: PokemonResDto = try await self.httpClient.get(
-			route: "pokemon/" + pokemonName
+			route: "pokemon/" + pokemonName,
+			params: nil
 		);
+		return res;
+	}
+	
+	public func getAllPokemon(limit: String, offset: String) async throws -> PokemonResDto {
+		
+		let res: PokemonResDto = try await self.httpClient.get(
+			route: "pokemon/",
+			params: [
+				URLQueryItem(name: limit, value: limit),
+				URLQueryItem(name: offset, value: offset)
+			]
+		);
+		
 		return res;
 	}
 }
