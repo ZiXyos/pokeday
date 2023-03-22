@@ -15,6 +15,10 @@
 		107E32FD29CA0A990059F22B /* http-client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E32FC29CA0A990059F22B /* http-client.swift */; };
 		107E330029CA1A5A0059F22B /* pokemon.ressource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E32FF29CA1A5A0059F22B /* pokemon.ressource.swift */; };
 		107E330329CA1CED0059F22B /* pokemon.res.dto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E330229CA1CED0059F22B /* pokemon.res.dto.swift */; };
+		107E330A29CAAF9E0059F22B /* login.view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E330929CAAF9E0059F22B /* login.view.swift */; };
+		107E330D29CAB0380059F22B /* login.view.model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E330C29CAB0380059F22B /* login.view.model.swift */; };
+		107E330F29CAC9B10059F22B /* app.navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E330E29CAC9B10059F22B /* app.navigation.swift */; };
+		107E331129CACDE80059F22B /* auth.navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E331029CACDE80059F22B /* auth.navigation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +31,10 @@
 		107E32FC29CA0A990059F22B /* http-client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "http-client.swift"; sourceTree = "<group>"; };
 		107E32FF29CA1A5A0059F22B /* pokemon.ressource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pokemon.ressource.swift; sourceTree = "<group>"; };
 		107E330229CA1CED0059F22B /* pokemon.res.dto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pokemon.res.dto.swift; sourceTree = "<group>"; };
+		107E330929CAAF9E0059F22B /* login.view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = login.view.swift; sourceTree = "<group>"; };
+		107E330C29CAB0380059F22B /* login.view.model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = login.view.model.swift; sourceTree = "<group>"; };
+		107E330E29CAC9B10059F22B /* app.navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = app.navigation.swift; sourceTree = "<group>"; };
+		107E331029CACDE80059F22B /* auth.navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = auth.navigation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,8 @@
 		107E32EA29CA07680059F22B /* pokeday */ = {
 			isa = PBXGroup;
 			children = (
+				107E330529CAAF3C0059F22B /* navigations */,
+				107E330429CAAF1D0059F22B /* views */,
 				107E32EB29CA07680059F22B /* pokedayApp.swift */,
 				107E32ED29CA07680059F22B /* ContentView.swift */,
 				107E32EF29CA076A0059F22B /* Assets.xcassets */,
@@ -101,6 +111,56 @@
 				107E330229CA1CED0059F22B /* pokemon.res.dto.swift */,
 			);
 			path = dto;
+			sourceTree = "<group>";
+		};
+		107E330429CAAF1D0059F22B /* views */ = {
+			isa = PBXGroup;
+			children = (
+				107E330629CAAF510059F22B /* auth */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		107E330529CAAF3C0059F22B /* navigations */ = {
+			isa = PBXGroup;
+			children = (
+				107E330E29CAC9B10059F22B /* app.navigation.swift */,
+				107E331029CACDE80059F22B /* auth.navigation.swift */,
+			);
+			path = navigations;
+			sourceTree = "<group>";
+		};
+		107E330629CAAF510059F22B /* auth */ = {
+			isa = PBXGroup;
+			children = (
+				107E330829CAAF6E0059F22B /* register */,
+				107E330729CAAF660059F22B /* login */,
+			);
+			path = auth;
+			sourceTree = "<group>";
+		};
+		107E330729CAAF660059F22B /* login */ = {
+			isa = PBXGroup;
+			children = (
+				107E330B29CAB0160059F22B /* models */,
+				107E330929CAAF9E0059F22B /* login.view.swift */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		107E330829CAAF6E0059F22B /* register */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = register;
+			sourceTree = "<group>";
+		};
+		107E330B29CAB0160059F22B /* models */ = {
+			isa = PBXGroup;
+			children = (
+				107E330C29CAB0380059F22B /* login.view.model.swift */,
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,9 +235,13 @@
 			files = (
 				107E32FD29CA0A990059F22B /* http-client.swift in Sources */,
 				107E32FB29CA07AA0059F22B /* client.swift in Sources */,
+				107E330D29CAB0380059F22B /* login.view.model.swift in Sources */,
 				107E32EE29CA07680059F22B /* ContentView.swift in Sources */,
 				107E330029CA1A5A0059F22B /* pokemon.ressource.swift in Sources */,
+				107E330A29CAAF9E0059F22B /* login.view.swift in Sources */,
+				107E330F29CAC9B10059F22B /* app.navigation.swift in Sources */,
 				107E330329CA1CED0059F22B /* pokemon.res.dto.swift in Sources */,
+				107E331129CACDE80059F22B /* auth.navigation.swift in Sources */,
 				107E32EC29CA07680059F22B /* pokedayApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

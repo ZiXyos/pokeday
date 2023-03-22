@@ -11,15 +11,20 @@ import SwiftUI;
 struct pokedexApp: App {
 	
 	let client: PokeSdkClient;
+	private var nav: AppNavigation;
 
     var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+		WindowGroup {
+			AppNavigationView(
+				appNavigation: self.nav
+			)
+		}
     }
-	
+
 	init() {
+
 		let clientOptions: ClientOptions = ClientOptions();
 		self.client = PokeSdkClient(clientOptions: clientOptions);
+		self.nav = AppNavigation();
 	}
 }
