@@ -30,12 +30,10 @@ struct LoginView: View {
 				.padding(.bottom, 20)
 			
 			Button("Login") {
-				Task {
-					self.viewModel.loginWithUsername(
-						username: self.username,
-						password: self.password
-					)
-				}
+				self.viewModel.loginWithUsername(
+					username: self.username,
+					password: self.password
+				)
 			}
 		}
     }
