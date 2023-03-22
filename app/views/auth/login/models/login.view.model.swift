@@ -20,6 +20,7 @@ class LoginViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		username: String,
 		password: String
 	) -> Void {
+
 		self.services.authManager.login(token: username);
 		print("[LOG]: Logging In with Username !!!");
 	}
