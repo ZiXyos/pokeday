@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		107E32EC29CA07680059F22B /* pokedayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E32EB29CA07680059F22B /* pokedayApp.swift */; };
-		107E32EE29CA07680059F22B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E32ED29CA07680059F22B /* ContentView.swift */; };
 		107E32F029CA076A0059F22B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 107E32EF29CA076A0059F22B /* Assets.xcassets */; };
 		107E32F329CA076A0059F22B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 107E32F229CA076A0059F22B /* Preview Assets.xcassets */; };
 		107E32FB29CA07AA0059F22B /* client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E32FA29CA07AA0059F22B /* client.swift */; };
@@ -29,7 +28,6 @@
 /* Begin PBXFileReference section */
 		107E32E829CA07680059F22B /* pokeday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pokeday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		107E32EB29CA07680059F22B /* pokedayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pokedayApp.swift; sourceTree = "<group>"; };
-		107E32ED29CA07680059F22B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		107E32EF29CA076A0059F22B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		107E32F229CA076A0059F22B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		107E32FA29CA07AA0059F22B /* client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = client.swift; sourceTree = "<group>"; };
@@ -62,7 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				107E32F929CA078F0059F22B /* pokemonSdk */,
-				107E32EA29CA07680059F22B /* pokeday */,
+				107E32EA29CA07680059F22B /* app */,
 				107E32E929CA07680059F22B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,7 +73,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		107E32EA29CA07680059F22B /* pokeday */ = {
+		107E32EA29CA07680059F22B /* app */ = {
 			isa = PBXGroup;
 			children = (
 				107E331E29CAEC580059F22B /* types */,
@@ -83,11 +81,10 @@
 				107E330529CAAF3C0059F22B /* navigations */,
 				107E330429CAAF1D0059F22B /* views */,
 				107E32EB29CA07680059F22B /* pokedayApp.swift */,
-				107E32ED29CA07680059F22B /* ContentView.swift */,
 				107E32EF29CA076A0059F22B /* Assets.xcassets */,
 				107E32F129CA076A0059F22B /* Preview Content */,
 			);
-			path = pokeday;
+			path = app;
 			sourceTree = "<group>";
 		};
 		107E32F129CA076A0059F22B /* Preview Content */ = {
@@ -278,7 +275,6 @@
 				107E331529CAD4E80059F22B /* app.state.manager.swift in Sources */,
 				107E331929CAE3890059F22B /* auth.state.swift in Sources */,
 				107E330D29CAB0380059F22B /* login.view.model.swift in Sources */,
-				107E32EE29CA07680059F22B /* ContentView.swift in Sources */,
 				107E331729CAE2940059F22B /* auth.state.manager.swift in Sources */,
 				107E330029CA1A5A0059F22B /* pokemon.ressource.swift in Sources */,
 				107E330A29CAAF9E0059F22B /* login.view.swift in Sources */,
@@ -414,7 +410,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"pokeday/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"app/Preview Content\"";
 				DEVELOPMENT_TEAM = 4QL9TPHMX5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -425,6 +421,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -445,7 +442,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"pokeday/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"app/Preview Content\"";
 				DEVELOPMENT_TEAM = 4QL9TPHMX5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -456,6 +453,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
