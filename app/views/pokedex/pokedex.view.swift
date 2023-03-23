@@ -10,7 +10,11 @@ import SwiftUI
 struct PokedexView: View {
 	
 	private let gridItems = [GridItem(.flexible()), GridItem(.flexible())]
+	private let viewModel: PokedexViewModel;
 	
+	public init(viewModel: PokedexViewModel) {
+		self.viewModel = viewModel
+	}
 	var body: some View {
 		
 		VStack {
@@ -33,7 +37,16 @@ struct PokedexView: View {
 }
 
 struct pokedex_view_Previews: PreviewProvider {
+
     static var previews: some View {
-		PokedexView();
+		PokedexView(
+			viewModel: PokedexViewModel(
+				services: AppState(
+					pokeSdkClient: PokeSdkClient(
+						clientOptions: ClientOptions()
+					)
+				)
+			)
+		);
     }
 }

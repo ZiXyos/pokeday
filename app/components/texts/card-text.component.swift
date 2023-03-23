@@ -53,6 +53,9 @@ struct CardTypeText: View {
 
 struct CardTitleText_Previews: PreviewProvider {
 	static var previews: some View {
-		CardTitleText(data: "Fire").background(Color.red);
+		VStack(alignment: .leading) {
+			CardTitleText(data: "Ditto");
+			CardTypeText(data: "Poison");
+		}.background(Color.purple)
 	}
 }
