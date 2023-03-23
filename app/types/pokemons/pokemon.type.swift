@@ -18,4 +18,5 @@ public struct Pokemon: Codable {
 	var weight: Int;
 	var abilities: [PokemonAbility];
 	let forms: [String];
+	let type: [String];
 }
