@@ -7,21 +7,10 @@
 
 import Foundation;
 
-public struct PokemonDto: Codable {
-	
-	let id: Int;
-	let name: String;
-	let base_experience: Int;
-	let height: Int;
-	let is_default: Bool;
-	let order: Bool;
-	let weight: Int;
-}
-
 public class PokemonResDto: Codable {
 	
 	public var status: Int;
-	public var data: PokemonDto;
+	public var data: Pokemon;
 	
 	enum Keys: String, CodingKey {
 		
@@ -33,6 +22,6 @@ public class PokemonResDto: Codable {
 		
 		let container = try decoder.container(keyedBy: Keys.self);
 		self.status = try container.decode(Int.self, forKey: .status);
-		self.data = try container.decode(PokemonDto.self, forKey: .data);
+		self.data = try container.decode(Pokemon.self, forKey: .data);
 	}
 }

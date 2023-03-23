@@ -25,9 +25,9 @@ struct pokedexApp: App {
 	init() {
 
 		let clientOptions: ClientOptions = ClientOptions();
-
-		self.appService = AppState();
 		self.client = PokeSdkClient(clientOptions: clientOptions);
+
+		self.appService = AppState(pokeSdkClient: self.client);
 		self.nav = AppNavigation(stateService: self.appService);
 	}
 }
