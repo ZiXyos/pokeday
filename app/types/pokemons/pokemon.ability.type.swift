@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct PokemonAbility: Codable {
+public struct PokemonAbility: Codable, Identifiable {
 	
-	let id: Int;
-	let name: String;
-	let is_main_series: Bool;
+	public let id: Int;
+	public let name: String;
+	public let is_main_series: Bool;
 }

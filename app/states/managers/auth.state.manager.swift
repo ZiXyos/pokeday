@@ -43,7 +43,6 @@ struct AuthStateManager: AuthStateManager_P {
 		self.authState.isLogged.toggle();
 	}
 	
-	
 	private func initValues() -> Void {
 		
 		self.authState.isLogged = self.appStateManager.getDefault(.isAuth);

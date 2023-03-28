@@ -7,21 +7,78 @@
 
 import Foundation;
 
+public class ResultsGetAllPokemonDto: Codable, Identifiable {
+	
+	public var name: String;
+	public var url: String;
+}
+
+public class GetAllPokemonDto: Codable {
+	
+	public var count: Int;
+	public var next: String?;
+	public var previous: String?;
+	public var results: [ResultsGetAllPokemonDto];
+}
+
+public struct PokemonSpritesDto: Codable {
+	
+	public let front_default: String;
+	public let front_shiny: String;
+	//public let front_female: String;
+	//public let front_shiny_female: String;
+	public let back_default: String;
+	public let back_shiny: String;
+	//public let back_female: String;
+	//public let back_shiny_female: String;
+}
+
+public struct TypeResDto: Codable {
+
+	public let id: Int;
+	public let name: String;
+}
+
+public struct TypeDto: Codable {
+	
+	public let name: String;
+	public let url: String;
+}
+
+public struct PokemonTypeDto: Codable {
+	
+	public let slot: Int;
+	public let type: TypeDto
+}
+
+public struct PokemonDto: Codable, Identifiable {
+	
+	public let id: Int;
+	public var name: String;
+	public let base_experience: Int;
+	public var height: Int;
+	public let is_default: Bool;
+	//public var order: Bool;
+	public var weight: Int;
+	// public var abilities: [PokemonAbility];
+	//public let forms: [String];
+	//public let types: [PokemonTypeDto];
+	public let sprites: PokemonSpritesDto;
+}
+
 public class PokemonResDto: Codable {
 	
-	public var status: Int;
-	public var data: Pokemon;
+	public var data: PokemonDto;
 	
 	enum Keys: String, CodingKey {
 		
 		case status
-		case data
+		case datas
 	}
 	
 	public required init(from decoder: Decoder) throws {
 		
 		let container = try decoder.container(keyedBy: Keys.self);
-		self.status = try container.decode(Int.self, forKey: .status);
-		self.data = try container.decode(Pokemon.self, forKey: .data);
+		self.data = try container.decode(PokemonDto.self, forKey: .datas);
 	}
 }

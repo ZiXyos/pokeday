@@ -85,6 +85,7 @@ class HttpClient {
 			);
 		}
 		let response = try JSONDecoder().decode(T.self, from: data);
+		
 		return response;
 	}
 	

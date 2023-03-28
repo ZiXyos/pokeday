@@ -11,25 +11,36 @@ struct PokedexView: View {
 	
 	private let gridItems = [GridItem(.flexible()), GridItem(.flexible())]
 	private let viewModel: PokedexViewModel;
-	
+
 	public init(viewModel: PokedexViewModel) {
-		self.viewModel = viewModel
+		self.viewModel = viewModel;
 	}
+	
 	var body: some View {
-		
 		VStack {
 			NavigationView {
 				ScrollView {
-					Text("Pokedex").bold()
 					LazyVGrid(
 						columns: gridItems,
 						spacing: 25,
 						content: {
-							ForEach(0..<151) { _ in
-								CardComponent()
+							ForEach(1..<100) { v in
+								CardComponent(
+									name: "Charizard",
+									type: ["type1", "type2"],
+									thumb: URL(
+										string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png"
+									)!
+								)
 							}
 						}
 					)
+				}
+			}.task {
+				do {
+					try await self.viewModel.fetchAllPokemons();
+				} catch {
+					print("[ERROR]: \(error)");
 				}
 			}
 		}
