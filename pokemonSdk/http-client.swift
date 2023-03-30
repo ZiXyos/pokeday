@@ -76,7 +76,7 @@ class HttpClient {
 			method: requestOptions!.method,
 			params: requestOptions?.params ?? []
 		);
-		
+	
 		let (data, res) = try await urlSession.data(for: req);
 		guard (res as? HTTPURLResponse)?.statusCode == 200 else {
 			
@@ -84,8 +84,8 @@ class HttpClient {
 				String(decoding: data, as: UTF8.self)
 			);
 		}
+
 		let response = try JSONDecoder().decode(T.self, from: data);
-		
 		return response;
 	}
 	
@@ -94,6 +94,8 @@ class HttpClient {
 		params: Optional<[URLQueryItem]>
 	) async throws -> T {
 		
+		print(route);
+
 		let ret: T = try await self.req(
 			requestOptions: RequestOptions(
 				path: route,

@@ -25,6 +25,9 @@ struct LoadingView: View {
 						try await self.viewModel.loadRemoteData();
 						self.isLoading = false;
 						print("[LOG::TASK]: \(self.isLoading)");
+					} catch {
+						print(error);
+						fatalError(error.localizedDescription);
 					}
 				}
 			}

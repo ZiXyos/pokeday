@@ -8,7 +8,8 @@
 import Foundation
 
 class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
-
+	
+	var limitGen: Int = 3;
 	
 	public override init(services: StateServices_P) {
 		super.init(services: services);
@@ -16,21 +17,15 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	
 	public func loadRemoteData() async throws -> Void {
 
-		var res = try await self.services.pokeApiSdk.pokemons.getAllPokemon(
-			limit: "500",
-			offset: "0"
-		);
+		for i in 1...self.limitGen {
 
-		while res.next != nil {
+			let res = try await self.services.pokeApiSdk.gens.getRegionById(id: String(i))
 			
-			res = try await self.services.pokeApiSdk.pokemons.fetchNextPage(
-				next: res.next ?? ""
-			);
-			
-			for k in res.results {
-				try await self.loadRemotePokemon(pokeName: k.name);
+			for v in res.pokemon_species {
+
+				let id = URL(string: v.url)?.lastPathComponent ?? "";
+				try await self.loadRemotePokemon(id: id);
 			}
-			print("[LOG::NEXTPAGE]:\(String(describing: res.next))");
 		}
 	}
 
@@ -38,12 +33,24 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		
 	}
 	
-	private func loadRemotePokemon(pokeName: String) async throws -> Void {
+	private func loadRemotePokemon(id: String) async throws -> Void {
 		
-		var res = try await self.services.pokeApiSdk.pokemons.getPokemonByName(
-			pokemonName: pokeName
+		let res = try await self.services.pokeApiSdk.pokemons.getPokemonById(
+			pokemonId: id
 		);
-		
+
 		print("[LOG::FETCHED::POKEMON]: \(res.name)");
+	}
+	
+	private func isLimit(generation: Int) -> Bool {
+
+		if limitGen == generation {
+			return true;
+		}
+		return false;
+	}
+	
+	private func setLimitGen(gen: Int) -> Void {
+		self.limitGen = gen;
 	}
 }
