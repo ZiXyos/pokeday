@@ -9,15 +9,20 @@ import SwiftUI;
 
 @main
 struct pokedexApp: App {
-	
+
 	let client: PokeSdkClient;
+
 	private var nav: AppNavigation;
 	private var appService: StateServices_P;
-
+	@StateObject private var appController = AppController(factory: AppControllerFactory());
+	
     var body: some Scene {
 		WindowGroup {
 			AppNavigationView(
 				appNavigation: self.nav
+			).environment(
+				\.managedObjectContext,
+				 appController.appContainer.viewContext
 			)
 		}
     }

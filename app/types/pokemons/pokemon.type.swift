@@ -7,7 +7,7 @@
 
 import Foundation;
 
-public struct Pokemon: Codable {
+public struct Pokemon_s: Codable {
 	
 	let id: Int;
 	var name: String;
