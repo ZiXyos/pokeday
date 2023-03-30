@@ -19,7 +19,7 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 
 		for i in 1...self.limitGen {
 
-			let res = try await self.services.pokeApiSdk.gens.getRegionById(id: String(i))
+			let res = try await self.services.pokeApiSdk.gens.getGenById(id: String(i))
 			for v in res.pokemon_species {
 
 				let id = URL(string: v.url)?.lastPathComponent ?? "";

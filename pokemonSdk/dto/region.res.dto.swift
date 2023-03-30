@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class RegionResDto: Codable {
+public class GenerationResDto: Codable {
 	
 	public let id: Int;
 	public let name: String;

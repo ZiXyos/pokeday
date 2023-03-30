@@ -16,7 +16,7 @@ public class GenerationRessource {
 		self.httpClient = httpClient;
 	}
 	
-	public func getAllRegions(limit: String, offset: String) async throws -> GetAllPokemonDto {
+	public func getAllGens(limit: String, offset: String) async throws -> GetAllPokemonDto {
 		
 		let res: GetAllPokemonDto = try await self.httpClient.get(
 			route: "generation/",
@@ -29,9 +29,9 @@ public class GenerationRessource {
 		return res;
 	}
 
-	public func getRegionByName(name: String) async throws -> RegionResDto {
+	public func getGenByName(name: String) async throws -> GenerationResDto {
 		
-		let res: RegionResDto = try await self.httpClient.get(
+		let res: GenerationResDto = try await self.httpClient.get(
 			route: "generation/\(name)",
 			params: nil
 		);
@@ -39,9 +39,9 @@ public class GenerationRessource {
 		return res;
 	}
 	
-	public func getRegionById(id: String) async throws -> RegionResDto {
+	public func getGenById(id: String) async throws -> GenerationResDto {
 		
-		let res: RegionResDto = try await self.httpClient.get(
+		let res: GenerationResDto = try await self.httpClient.get(
 			route: "generation/" + id,
 			params: nil
 		);
