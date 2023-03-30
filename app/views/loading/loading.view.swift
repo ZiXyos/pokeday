@@ -22,7 +22,7 @@ struct LoadingView: View {
 			Button("Load") {
 				Task {
 					do {
-						try await self.viewModel.loadRemoteData();
+						try await self.viewModel.getRemoteData();
 						self.isLoading = false;
 						print("[LOG::TASK]: \(self.isLoading)");
 					} catch {

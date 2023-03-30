@@ -15,16 +15,15 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		super.init(services: services);
 	}
 	
-	public func loadRemoteData() async throws -> Void {
+	public func getRemoteData() async throws -> Void {
 
 		for i in 1...self.limitGen {
 
 			let res = try await self.services.pokeApiSdk.gens.getRegionById(id: String(i))
-			
 			for v in res.pokemon_species {
 
 				let id = URL(string: v.url)?.lastPathComponent ?? "";
-				try await self.loadRemotePokemon(id: id);
+				try await self.setRemotePokemon(id: id);
 			}
 		}
 	}
@@ -33,11 +32,12 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		
 	}
 	
-	private func loadRemotePokemon(id: String) async throws -> Void {
+	private func setRemotePokemon(id: String) async throws -> Void {
 		
 		let res = try await self.services.pokeApiSdk.pokemons.getPokemonById(
 			pokemonId: id
 		);
+		
 
 		print("[LOG::FETCHED::POKEMON]: \(res.name)");
 	}
