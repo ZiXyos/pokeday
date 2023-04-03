@@ -20,3 +20,20 @@ public final class PokemonEntity {
 	@NSManaged var weight: Int;
 	@NSManaged var type: [String];
 }
+
+extension Pokemon {
+	
+	@nonobjc public func fetchRequest() -> NSFetchRequest<Pokemon> {
+		return NSFetchRequest<Pokemon>(entityName: "Pokemon");
+	}
+	
+	@NSManaged public var pokemons: NSSet?;
+
+	public var pokemonArr: [Pokemon] {
+		
+		let pokemonSet = pokemons as? Set<Pokemon> ?? [];
+		return pokemonSet.sorted {
+			$0.id > $1.id
+		}
+	}
+}

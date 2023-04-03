@@ -14,7 +14,7 @@ struct pokedexApp: App {
 
 	private var nav: AppNavigation;
 	private var appService: StateServices_P;
-	@StateObject private var appController = AppController(factory: AppControllerFactory());
+	@StateObject private var appController = AppController.shared;
 	
     var body: some Scene {
 		WindowGroup {

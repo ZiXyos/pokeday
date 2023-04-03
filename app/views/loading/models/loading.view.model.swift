@@ -5,13 +5,19 @@
 //  Created by Ktchoumh on 3/28/23.
 //
 
-import Foundation
+import Foundation;
+import SwiftUI;
+import CoreData
 
 class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
+	
+	private let viewContext = AppController.shared.viewContext;
+	@Published var pokemons: [Pokemon] = [];
 	
 	var limitGen: Int = 3;
 	
 	public override init(services: StateServices_P) {
+		
 		super.init(services: services);
 	}
 	
@@ -19,7 +25,10 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 
 		for i in 1...self.limitGen {
 
-			let res = try await self.services.pokeApiSdk.gens.getGenById(id: String(i))
+			let res = try await self.services.pokeApiSdk.gens.getGenById(
+				id: String(i)
+			);
+			
 			for v in res.pokemon_species {
 
 				let id = URL(string: v.url)?.lastPathComponent ?? "";
@@ -30,6 +39,18 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 
 	public func loadLocalData() async throws -> Void {
 		
+		self.fetchLocalPokemon();
+	}
+	
+	private func fetchLocalPokemon() {
+		
+		let req = NSFetchRequest<Pokemon>(entityName: "Pokemon");
+		
+		do {
+			self.pokemons = try viewContext.fetch(req);
+		} catch {
+			fatalError(error.localizedDescription);
+		}
 	}
 	
 	private func setRemotePokemon(id: String) async throws -> Void {
@@ -38,7 +59,12 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 			pokemonId: id
 		);
 		
-
+		let pokemon = Pokemon(context: self.viewContext);
+		pokemon.id = Int64(res.id);
+		pokemon.name = res.name;
+		pokemon.height = Int32(res.height);
+		pokemon.base_experience = Int32(res.base_experience);
+		//await self.save();
 		print("[LOG::FETCHED::POKEMON]: \(res.name)");
 	}
 	
@@ -52,5 +78,15 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	
 	private func setLimitGen(gen: Int) -> Void {
 		self.limitGen = gen;
+	}
+	
+	private func save() async -> Void {
+
+		do {
+			try self.viewContext.save()
+		}catch {
+			print("Error saving");
+			fatalError(error.localizedDescription);
+		}
 	}
 }

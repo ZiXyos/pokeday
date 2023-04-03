@@ -10,23 +10,40 @@ import CoreData;
 
 class AppController: ObservableObject {
 
+	static let shared = AppController();
 	let appContainer: NSPersistentContainer;
-	let factory: AppControllerFactory;
-
-	init(factory: AppControllerFactory) {
+	var viewContext: NSManagedObjectContext {
 		
-		self.factory = factory;
-		
-		self.appContainer = NSPersistentContainer(
-			name: "AppModel",
-			managedObjectModel: factory.initEntity()
-		)
+		return self.appContainer.viewContext;
 	}
-}
 
-class AppControllerFactory {
+	init(inMemory: Bool = false) {
+
+		self.appContainer = NSPersistentContainer(
+			name: "AppModel"
+		);
+		
+		if inMemory {
+			self.appContainer.persistentStoreDescriptions.first!.url = URL(
+				fileURLWithPath: "/dev/null"
+			);
+			
+			self.appContainer.loadPersistentStores(
+				completionHandler: { (storeDescription, error) in
+				
+					if let error = error as NSError? {
+						fatalError(
+							"[LOG::ERROR::Unresolved]: \(error), \(error.userInfo)"
+						)
+					}
+				}
+			);
 	
-	func initEntity() -> NSManagedObjectModel {
+			self.appContainer.viewContext.automaticallyMergesChangesFromParent = true;
+		}
+	}
+	
+	static func initEntity() -> NSManagedObjectModel {
 		
 		let userEntity = NSEntityDescription();
 		userEntity.name = "User";
@@ -45,4 +62,9 @@ class AppControllerFactory {
 		
 		return model;
 	}
+}
+
+class AppControllerFactory {
+	
+	
 }
