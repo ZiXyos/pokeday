@@ -23,7 +23,9 @@ class TabNavigation: ObservableObject {
 	}
 	
 	@ViewBuilder func pokedexScreen() -> some View {
-		Text("catch'em ALL")
+		PokedexView(
+			viewModel: PokedexViewModel(services: self.stateService)
+		)
 	}
 	
 	@ViewBuilder func profilScreen() -> some View {

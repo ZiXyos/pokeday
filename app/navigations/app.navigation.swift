@@ -57,6 +57,19 @@ class AppNavigation: ObservableObject {
 	@ViewBuilder public func tabScreen() -> some View {
 		TabNavigationView(nav: self.tabNav);
 	}
+	
+	@ViewBuilder public func loadingScreen() -> some View {
+		
+		LoadingView(
+			viewModel: LoadingViewModel(
+				services: AppState(
+					pokeSdkClient: PokeSdkClient(
+						clientOptions: ClientOptions()
+					)
+				)
+			)
+		);
+	}
 }
 
 public struct AppNavigationView: View {
@@ -70,7 +83,7 @@ public struct AppNavigationView: View {
 		case .auth:
 			self.appNavigation.authScreen();
 		case .tab:
-			self.appNavigation.tabScreen();
+			self.appNavigation.loadingScreen();
 		}
 	}
 }
