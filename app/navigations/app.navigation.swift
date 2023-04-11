@@ -13,6 +13,7 @@ enum AppNavigationScreen {
 	
 	case auth;
 	case tab;
+	case load
 }
 
 class AppNavigation: ObservableObject {
@@ -49,6 +50,10 @@ class AppNavigation: ObservableObject {
 		   }.store(in: &self.anyCancellable)
 	   }
 	
+	public func setBinding(bind: AppNavigationScreen) {
+		self.screen = bind;
+	}
+	
 	@ViewBuilder public func authScreen() -> some View {
 		
 		AuthNAvigationView(nav: self.authNav);
@@ -82,8 +87,10 @@ public struct AppNavigationView: View {
 			
 		case .auth:
 			self.appNavigation.authScreen();
-		case .tab:
+		case .load:
 			self.appNavigation.loadingScreen();
+		case .tab:
+			self.appNavigation.tabScreen();
 		}
 	}
 }

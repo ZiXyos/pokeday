@@ -10,7 +10,7 @@ import CoreData;
 
 class AppController: ObservableObject {
 
-	static let shared = AppController();
+	static let shared = AppController(inMemory: true);
 	let appContainer: NSPersistentContainer;
 	var viewContext: NSManagedObjectContext {
 		

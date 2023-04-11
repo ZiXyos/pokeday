@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoadingView: View {
     
-	@State var isLoading = true;
+	@State var isLoading = false;
 	private let viewModel: LoadingViewModel;
 	
 	public init(viewModel: LoadingViewModel) {
@@ -20,10 +20,7 @@ struct LoadingView: View {
 	var body: some View {
 		if isLoading {
 			Button("TODO Loader") {
-				
-
 				let _ = self.viewModel.play();
-				
 			}.onAppear {
 				Task {
 					do {
@@ -37,7 +34,7 @@ struct LoadingView: View {
 				}
 			}
 		} else {
-			Text("HELLO I'LL PUSH NAV");
+		
 		}
 	}
 }
