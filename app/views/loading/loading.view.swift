@@ -14,12 +14,17 @@ struct LoadingView: View {
 	
 	public init(viewModel: LoadingViewModel) {
 
-		self.viewModel = viewModel
+		self.viewModel = viewModel;
 	}
 	
 	var body: some View {
 		if isLoading {
-			Button("Load") {
+			Button("TODO Loader") {
+				
+
+				let _ = self.viewModel.play();
+				
+			}.onAppear {
 				Task {
 					do {
 						try await self.viewModel.getRemoteData();

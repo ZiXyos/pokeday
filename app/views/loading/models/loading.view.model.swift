@@ -7,17 +7,28 @@
 
 import Foundation;
 import SwiftUI;
-import CoreData
+import CoreData;
+import AVFAudio;
 
 class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	
 	private let viewContext = AppController.shared.viewContext;
-	@Published var pokemons: [Pokemon] = [];
 	
+	public let player: AudioManager;
+	
+	@Published var pokemons: [Pokemon] = [];
 	var limitGen: Int = 3;
 	
 	public override init(services: StateServices_P) {
 		
+		guard let url = Bundle.main.url(
+			forResource: "pokemon_rb_intro",
+			withExtension: ".mp3"
+		) else {
+			fatalError("error finding files");
+		}
+		print("[LOG]: \(url)");
+		self.player = AudioManager(url: url);
 		super.init(services: services);
 	}
 	
@@ -51,6 +62,13 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		} catch {
 			fatalError(error.localizedDescription);
 		}
+	}
+	
+	public func play() -> Void {
+		
+		self.player.initPlayer();
+	
+		let _ = self.player.play();
 	}
 	
 	private func setRemotePokemon(id: String) async throws -> Void {
