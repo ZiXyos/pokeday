@@ -21,6 +21,7 @@ class PokeSdkClient {
 	public let apiVersion: String;
 	
 	public let pokemons: PokemonRessources;
+	public let gens: GenerationRessource
 	
 	init(clientOptions: ClientOptions) {
 		
@@ -31,6 +32,7 @@ class PokeSdkClient {
 		self.httpClient = HttpClient(baseUrl: self.baseUrl);
 		
 		
-		self.pokemons = PokemonRessources(httpClient: self.httpClient)
+		self.pokemons = PokemonRessources(httpClient: self.httpClient);
+		self.gens = GenerationRessource(httpClient: self.httpClient);
 	}
 }

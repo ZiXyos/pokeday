@@ -22,7 +22,6 @@ class LoginViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	) -> Void {
 
 		self.services.authManager.login(token: username);
-		print("[LOG]: Logging In with Username !!!");
 	}
 	
 	public func loginWithEmail(
