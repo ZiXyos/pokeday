@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1009E36B29F91FCC00C6A706 /* type-icon.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1009E36A29F91FCC00C6A706 /* type-icon.enum.swift */; };
+		1009E36D29F9235900C6A706 /* pills.type.button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1009E36C29F9235900C6A706 /* pills.type.button.swift */; };
+		1009E37129F9257C00C6A706 /* leaf_icon_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 1009E37029F9255800C6A706 /* leaf_icon_full.png */; };
+		1009E37329F9268D00C6A706 /* pills.pokemon.button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1009E37229F9268D00C6A706 /* pills.pokemon.button.swift */; };
 		1026E82D29D290B100B271FD /* loading.view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1026E82C29D290B100B271FD /* loading.view.swift */; };
 		1026E83029D292DB00B271FD /* loading.view.model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1026E82F29D292DB00B271FD /* loading.view.model.swift */; };
 		1026E84029D436EF00B271FD /* user.entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1026E83F29D436EF00B271FD /* user.entity.swift */; };
@@ -31,6 +35,7 @@
 		1063097E29F00C920050A175 /* pokemon.viewmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1063097D29F00C920050A175 /* pokemon.viewmodel.swift */; };
 		1063098129F685EE0050A175 /* header.pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1063098029F685EE0050A175 /* header.pokemon.swift */; };
 		1063098F29F69A080050A175 /* leaf_icon_unfull.png in Resources */ = {isa = PBXBuildFile; fileRef = 1063098D29F69A080050A175 /* leaf_icon_unfull.png */; };
+		1063099429F6A4750050A175 /* ui.tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1063099329F6A4750050A175 /* ui.tools.swift */; };
 		107E32EC29CA07680059F22B /* pokedayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E32EB29CA07680059F22B /* pokedayApp.swift */; };
 		107E32F029CA076A0059F22B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 107E32EF29CA076A0059F22B /* Assets.xcassets */; };
 		107E32F329CA076A0059F22B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 107E32F229CA076A0059F22B /* Preview Assets.xcassets */; };
@@ -50,6 +55,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1009E36A29F91FCC00C6A706 /* type-icon.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "type-icon.enum.swift"; sourceTree = "<group>"; };
+		1009E36C29F9235900C6A706 /* pills.type.button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pills.type.button.swift; sourceTree = "<group>"; };
+		1009E36F29F9255800C6A706 /* leaf_icon_unfull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaf_icon_unfull.png; sourceTree = "<group>"; };
+		1009E37029F9255800C6A706 /* leaf_icon_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaf_icon_full.png; sourceTree = "<group>"; };
+		1009E37229F9268D00C6A706 /* pills.pokemon.button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pills.pokemon.button.swift; sourceTree = "<group>"; };
 		1026E82C29D290B100B271FD /* loading.view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loading.view.swift; sourceTree = "<group>"; };
 		1026E82F29D292DB00B271FD /* loading.view.model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loading.view.model.swift; sourceTree = "<group>"; };
 		1026E83F29D436EF00B271FD /* user.entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.entity.swift; sourceTree = "<group>"; };
@@ -77,6 +87,7 @@
 		1063098C29F69A080050A175 /* leaf_icon_unfull.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = leaf_icon_unfull.svg; sourceTree = "<group>"; };
 		1063098D29F69A080050A175 /* leaf_icon_unfull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaf_icon_unfull.png; sourceTree = "<group>"; };
 		1063099029F69A220050A175 /* leaf_icon_unfull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaf_icon_unfull.png; sourceTree = "<group>"; };
+		1063099329F6A4750050A175 /* ui.tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ui.tools.swift; sourceTree = "<group>"; };
 		107E32E829CA07680059F22B /* pokeday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pokeday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		107E32EB29CA07680059F22B /* pokedayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pokedayApp.swift; sourceTree = "<group>"; };
 		107E32EF29CA076A0059F22B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +118,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1009E36929F91FB400C6A706 /* enums */ = {
+			isa = PBXGroup;
+			children = (
+				1009E36A29F91FCC00C6A706 /* type-icon.enum.swift */,
+			);
+			path = enums;
+			sourceTree = "<group>";
+		};
+		1009E36E29F9255800C6A706 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				1009E36F29F9255800C6A706 /* leaf_icon_unfull.png */,
+				1009E37029F9255800C6A706 /* leaf_icon_full.png */,
+			);
+			name = icons;
+			path = app/src/assets/type/grass/icons;
+			sourceTree = "<group>";
+		};
 		1026E82B29D2909B00B271FD /* loading */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +272,8 @@
 		104DF15229CB5C1800D97446 /* buttons */ = {
 			isa = PBXGroup;
 			children = (
+				1009E36C29F9235900C6A706 /* pills.type.button.swift */,
+				1009E37229F9268D00C6A706 /* pills.pokemon.button.swift */,
 			);
 			path = buttons;
 			sourceTree = "<group>";
@@ -336,9 +367,18 @@
 			path = icons;
 			sourceTree = "<group>";
 		};
+		1063099229F6A45E0050A175 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				1063099329F6A4750050A175 /* ui.tools.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 		107E32DF29CA07680059F22B = {
 			isa = PBXGroup;
 			children = (
+				1009E36E29F9255800C6A706 /* icons */,
 				1026E84729D5489200B271FD /* AppModel.xcdatamodeld */,
 				107E32F929CA078F0059F22B /* pokemonSdk */,
 				107E32EA29CA07680059F22B /* app */,
@@ -357,6 +397,8 @@
 		107E32EA29CA07680059F22B /* app */ = {
 			isa = PBXGroup;
 			children = (
+				1009E36929F91FB400C6A706 /* enums */,
+				1063099229F6A45E0050A175 /* utils */,
 				1026E85729DC1D3500B271FD /* src */,
 				1026E84F29DBFDAB00B271FD /* managers */,
 				1026E83E29D4363F00B271FD /* entities */,
@@ -556,6 +598,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1009E37129F9257C00C6A706 /* leaf_icon_full.png in Resources */,
 				1063098F29F69A080050A175 /* leaf_icon_unfull.png in Resources */,
 				1026E85E29DC1D7500B271FD /* pokemon_rb_intro.mp3 in Resources */,
 				107E32F329CA076A0059F22B /* Preview Assets.xcassets in Resources */,
@@ -593,15 +636,19 @@
 				107E330029CA1A5A0059F22B /* pokemon.ressource.swift in Sources */,
 				107E330A29CAAF9E0059F22B /* login.view.swift in Sources */,
 				107E330F29CAC9B10059F22B /* app.navigation.swift in Sources */,
+				1063099429F6A4750050A175 /* ui.tools.swift in Sources */,
 				1063097E29F00C920050A175 /* pokemon.viewmodel.swift in Sources */,
 				1026E85329DBFDE000B271FD /* audio.manager.swift in Sources */,
 				107E330329CA1CED0059F22B /* pokemon.res.dto.swift in Sources */,
 				107E331129CACDE80059F22B /* auth.navigation.swift in Sources */,
+				1009E36B29F91FCC00C6A706 /* type-icon.enum.swift in Sources */,
 				104DF14D29CB579A00D97446 /* pokedex.view.swift in Sources */,
 				104DF14A29CB4B9D00D97446 /* pokemon.form.type.swift in Sources */,
 				107E331B29CAE80F0059F22B /* state.manager.swift in Sources */,
 				1026E84029D436EF00B271FD /* user.entity.swift in Sources */,
 				1026E84B29D557C800B271FD /* generation.ressource.swift in Sources */,
+				1009E37329F9268D00C6A706 /* pills.pokemon.button.swift in Sources */,
+				1009E36D29F9235900C6A706 /* pills.type.button.swift in Sources */,
 				104DF13F29CB0F4800D97446 /* tab.navigation.swift in Sources */,
 				104DF14429CB492400D97446 /* pokemon.ability.type.swift in Sources */,
 				107E32EC29CA07680059F22B /* pokedayApp.swift in Sources */,

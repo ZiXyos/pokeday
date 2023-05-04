@@ -5,15 +5,18 @@
 //  Created by Ktchoumh on 4/24/23.
 //
 
-import SwiftUI
+import SwiftUI;
 
 struct PokemonHeader: View {
 	
 	@State var typeUrl: URL? = nil;
+	@State var pokemonType: TypeIcons = .GRASS;
+	@State var pokemon: PokemonDto? = nil;
 	
 	init() {
+		
 		if let url = Bundle.main.url(
-			forResource: "leaf_icon_unfull",
+			forResource: self.pokemonType.rawValue,
 			withExtension: ".png"
 		) {
 			self.typeUrl = url;
@@ -23,8 +26,26 @@ struct PokemonHeader: View {
     var body: some View {
 		ZStack {
 			Ellipse()
-			.fill(LinearGradient(gradient: Gradient(colors: [Color(red: 0.39, green: 0.74, blue: 0.35), Color(red: 0.39, green: 0.74, blue: 0.35, opacity: 0.50)]), startPoint: .topLeading, endPoint: .bottomTrailing))
-			.offset(x: 6, y: -131.50)
+			.fill(
+				LinearGradient(
+					gradient: Gradient(
+						colors: [
+							Color(
+								red: 0.39,
+								green: 0.74,
+								blue: 0.35
+							),
+							Color(
+								red: 0.39,
+								green: 0.74,
+								blue: 0.35,
+								opacity: 0.50
+							)
+						]
+					),
+					startPoint: .topLeading, endPoint: .bottomTrailing
+				)
+			).offset(x: 6, y: -131.50)
 			.frame(width: 498, height: 498)
 
 			Image(uiImage: getImage(name: "leaf_icon_unfull")!)
@@ -40,18 +61,6 @@ struct PokemonHeader: View {
 		}
 		.frame(width: 360, height: 307)
 	}
-}
-
-public func getImage(name: String, ext: String = "png") -> UIImage? {
-	
-	guard let path = Bundle.main.path(
-		forResource: name,
-		ofType: ext
-	) else {
-		return nil;
-	}
-	
-	return UIImage(contentsOfFile: path);
 }
 
 struct PokemonHeaderPreview: PreviewProvider {
