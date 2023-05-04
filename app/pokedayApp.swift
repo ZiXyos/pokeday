@@ -7,16 +7,19 @@
 
 import SwiftUI;
 import AVFAudio;
+import FirebaseCore;
 
 @main
 struct pokedexApp: App {
+	
+	@UIApplicationDelegateAdaptor(AppDelegate.self) var delegate;
+	@StateObject private var appController = AppController.shared;
 
 	let client: PokeSdkClient;
 	let audioSession: AVAudioSession;
 	
 	private var nav: AppNavigation;
 	private var appService: StateServices_P;
-	@StateObject private var appController = AppController.shared;
 	
     var body: some Scene {
 		WindowGroup {
@@ -43,5 +46,19 @@ struct pokedexApp: App {
 		} catch {
 			fatalError(error.localizedDescription);
 		}
+	}
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+
+	func application(
+		_ application: UIApplication,
+		didFinishLaunchingWithOptions launchOptions: [
+			UIApplication.LaunchOptionsKey : Any
+		]? = nil
+	) -> Bool {
+		FirebaseApp.configure()
+
+		return true
 	}
 }

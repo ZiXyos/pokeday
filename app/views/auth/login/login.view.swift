@@ -30,8 +30,8 @@ struct LoginView: View {
 				.padding(.bottom, 20)
 			
 			Button("Login") {
-				self.viewModel.loginWithUsername(
-					username: self.username,
+				self.viewModel.register(
+					email: self.username,
 					password: self.password
 				)
 			}

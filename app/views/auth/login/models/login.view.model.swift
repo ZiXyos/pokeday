@@ -7,6 +7,7 @@
 
 import Foundation;
 import Combine;
+import FirebaseAuth;
 
 
 class LoginViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
@@ -32,6 +33,7 @@ class LoginViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		print("[LOG]: Logging In with Email !!!");
 	}
 	
+	
 	public func logingWithGoogle() -> Void {
 		
 		print("[LOG]: Logging in with Google !!!");
@@ -40,5 +42,21 @@ class LoginViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	public func forgotPassword(username: String) -> Void {
 		
 		print("[LOG]: Forgot Password");
+	}
+	
+	public func register(
+		email: String,
+		password: String
+	) -> Void {
+
+		Auth.auth().createUser(
+			withEmail: email,
+			password: password
+		) { [weak self] authResult, error in
+			guard self != nil else { return }
+			print(
+				"[LOG]::[REGISTER]: \(String(describing: authResult)) or \(String(describing: error))"
+			);
+		}
 	}
 }
