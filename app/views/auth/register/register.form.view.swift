@@ -17,6 +17,8 @@ struct RegisterFormView: View {
 	
 	@State var email: String = "";
 	@State var password: String = "";
+	@State var confirmPass: String = "";
+
 	@StateObject var viewModel: RegisterViewModel;
 
     var body: some View {
@@ -51,10 +53,10 @@ struct RegisterFormView: View {
 			
 			TextField("E-mail", text: $email)
 				.keyboardType(.default)
+				.textInputAutocapitalization(.never)
+				.disableAutocorrection(true)
 				.padding(.vertical, 14)
 				.padding(.leading, 16)
-				.padding(.trailing, 259)
-				.frame(width: 350, height: 52)
 				.cornerRadius(5)
 				.overlay(
 					RoundedRectangle(
@@ -74,12 +76,12 @@ struct RegisterFormView: View {
 			.font(.title2)
 			.frame(maxWidth: .infinity, alignment: .leading)
 			
-			SecureField("Password", text: self.$email)
+			SecureField("Password", text: self.$password)
 				.keyboardType(.emailAddress)
+				.textInputAutocapitalization(.never)
+				.disableAutocorrection(true)
 				.padding(.vertical, 14)
 				.padding(.leading, 16)
-				.padding(.trailing, 259)
-				.frame(width: 350, height: 52)
 				.cornerRadius(5)
 				.overlay(
 					RoundedRectangle(
@@ -99,12 +101,12 @@ struct RegisterFormView: View {
 			.font(.title2)
 			.frame(maxWidth: .infinity, alignment: .leading)
 			
-			SecureField("Password", text: self.$password)
+			SecureField("Password", text: self.$confirmPass)
+				.textInputAutocapitalization(.never)
+				.disableAutocorrection(true)
 				.keyboardType(.emailAddress)
 				.padding(.vertical, 14)
 				.padding(.leading, 16)
-				.padding(.trailing, 259)
-				.frame(width: 350, height: 52)
 				.cornerRadius(5)
 				.overlay(
 					RoundedRectangle(
@@ -119,11 +121,12 @@ struct RegisterFormView: View {
 					)
 				);
 				
+				
 			Spacer();
 
 			NavigationLink(destination: self.nav?.userFormViewNavigation()) {
 				Text("Continue").fontWeight(.semibold)
-					.foregroundColor(Color.white)
+					.foregroundColor(Color.black)
 					.font(.title3)
 					.padding([.horizontal], 10)
 					.frame(width: 328, height: 58)
@@ -135,7 +138,6 @@ struct RegisterFormView: View {
 		.padding(.bottom, 20)
 		.padding(.top, 46)
 		.frame(width: 360, height: 800)
-		.background(Color.white)
     }
 }
 

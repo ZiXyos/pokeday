@@ -82,7 +82,7 @@ struct RegisterView: View {
 					NavigationLink(destination: self.nav?.registerFormNavigation()) {
 						Text("Signup with E-Mail")
 							.fontWeight(.semibold)
-							.foregroundColor(Color.black)
+							.foregroundColor(Color.white)
 							.font(.callout)
 							.padding(.horizontal, 8)
 							.padding(.vertical, 10)
