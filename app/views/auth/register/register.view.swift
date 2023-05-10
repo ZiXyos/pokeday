@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct register_view: View {
+struct RegisterView: View {
 
     var body: some View {
 		VStack() {
@@ -97,6 +97,7 @@ struct register_view: View {
 
 struct register_view_Previews: PreviewProvider {
     static var previews: some View {
-        register_view()
+        
+		RegisterView();
     }
 }

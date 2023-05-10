@@ -60,6 +60,7 @@
 		10A8B28A2A0B912E009E41E8 /* json.tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8B2892A0B912E009E41E8 /* json.tools.swift */; };
 		10A8B28C2A0BC969009E41E8 /* register.view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8B28B2A0BC969009E41E8 /* register.view.swift */; };
 		10D44AE72A0BD7AB00C35003 /* google_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10D44AE62A0BD7AB00C35003 /* google_icon.png */; };
+		10D44AE92A0BDC1900C35003 /* register.form.view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D44AE82A0BDC1900C35003 /* register.form.view.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +119,7 @@
 		10A8B2892A0B912E009E41E8 /* json.tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = json.tools.swift; sourceTree = "<group>"; };
 		10A8B28B2A0BC969009E41E8 /* register.view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = register.view.swift; sourceTree = "<group>"; };
 		10D44AE62A0BD7AB00C35003 /* google_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = google_icon.png; sourceTree = "<group>"; };
+		10D44AE82A0BDC1900C35003 /* register.form.view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = register.form.view.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -515,6 +517,7 @@
 			children = (
 				10A8B28D2A0BC96E009E41E8 /* models */,
 				10A8B28B2A0BC969009E41E8 /* register.view.swift */,
+				10D44AE82A0BDC1900C35003 /* register.form.view.swift */,
 			);
 			path = register;
 			sourceTree = "<group>";
@@ -703,6 +706,7 @@
 				1026E84B29D557C800B271FD /* generation.ressource.swift in Sources */,
 				1009E37329F9268D00C6A706 /* pills.pokemon.button.swift in Sources */,
 				1009E36D29F9235900C6A706 /* pills.type.button.swift in Sources */,
+				10D44AE92A0BDC1900C35003 /* register.form.view.swift in Sources */,
 				104DF13F29CB0F4800D97446 /* tab.navigation.swift in Sources */,
 				104DF14429CB492400D97446 /* pokemon.ability.type.swift in Sources */,
 				107E32EC29CA07680059F22B /* pokedayApp.swift in Sources */,
