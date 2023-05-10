@@ -67,7 +67,7 @@ class LoginViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 					level: 1
 				).dictionary
 			]);
-		
+
 			print(
 				"[LOG]::[REGISTER]: \(String(describing: authResult?.user.uid)) or \(String(describing: error))"
 			);

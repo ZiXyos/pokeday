@@ -58,6 +58,8 @@
 		10A8B2852A03B1F5009E41E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10A8B2842A03B1F5009E41E8 /* GoogleService-Info.plist */; };
 		10A8B2882A0B8871009E41E8 /* user.document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8B2872A0B8871009E41E8 /* user.document.swift */; };
 		10A8B28A2A0B912E009E41E8 /* json.tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8B2892A0B912E009E41E8 /* json.tools.swift */; };
+		10A8B28C2A0BC969009E41E8 /* register.view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8B28B2A0BC969009E41E8 /* register.view.swift */; };
+		10D44AE72A0BD7AB00C35003 /* google_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10D44AE62A0BD7AB00C35003 /* google_icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +116,8 @@
 		10A8B2842A03B1F5009E41E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10A8B2872A0B8871009E41E8 /* user.document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.document.swift; sourceTree = "<group>"; };
 		10A8B2892A0B912E009E41E8 /* json.tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = json.tools.swift; sourceTree = "<group>"; };
+		10A8B28B2A0BC969009E41E8 /* register.view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = register.view.swift; sourceTree = "<group>"; };
+		10D44AE62A0BD7AB00C35003 /* google_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = google_icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,6 +353,7 @@
 		1063098829F69A080050A175 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				10D44AE52A0BD7AB00C35003 /* socials */,
 				1063098929F69A080050A175 /* type */,
 			);
 			path = assets;
@@ -508,6 +513,8 @@
 		107E330829CAAF6E0059F22B /* register */ = {
 			isa = PBXGroup;
 			children = (
+				10A8B28D2A0BC96E009E41E8 /* models */,
+				10A8B28B2A0BC969009E41E8 /* register.view.swift */,
 			);
 			path = register;
 			sourceTree = "<group>";
@@ -556,6 +563,21 @@
 				10A8B2872A0B8871009E41E8 /* user.document.swift */,
 			);
 			path = documents;
+			sourceTree = "<group>";
+		};
+		10A8B28D2A0BC96E009E41E8 /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		10D44AE52A0BD7AB00C35003 /* socials */ = {
+			isa = PBXGroup;
+			children = (
+				10D44AE62A0BD7AB00C35003 /* google_icon.png */,
+			);
+			path = socials;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -630,6 +652,7 @@
 				1026E85E29DC1D7500B271FD /* pokemon_rb_intro.mp3 in Resources */,
 				107E32F329CA076A0059F22B /* Preview Assets.xcassets in Resources */,
 				107E32F029CA076A0059F22B /* Assets.xcassets in Resources */,
+				10D44AE72A0BD7AB00C35003 /* google_icon.png in Resources */,
 				10A8B2852A03B1F5009E41E8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -674,6 +697,7 @@
 				10A8B28A2A0B912E009E41E8 /* json.tools.swift in Sources */,
 				104DF14D29CB579A00D97446 /* pokedex.view.swift in Sources */,
 				104DF14A29CB4B9D00D97446 /* pokemon.form.type.swift in Sources */,
+				10A8B28C2A0BC969009E41E8 /* register.view.swift in Sources */,
 				107E331B29CAE80F0059F22B /* state.manager.swift in Sources */,
 				1026E84029D436EF00B271FD /* user.entity.swift in Sources */,
 				1026E84B29D557C800B271FD /* generation.ressource.swift in Sources */,
