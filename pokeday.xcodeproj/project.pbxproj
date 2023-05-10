@@ -61,6 +61,7 @@
 		10A8B28C2A0BC969009E41E8 /* register.view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8B28B2A0BC969009E41E8 /* register.view.swift */; };
 		10D44AE72A0BD7AB00C35003 /* google_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10D44AE62A0BD7AB00C35003 /* google_icon.png */; };
 		10D44AE92A0BDC1900C35003 /* register.form.view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D44AE82A0BDC1900C35003 /* register.form.view.swift */; };
+		10D44AED2A0BE56800C35003 /* user.form.view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D44AEC2A0BE56800C35003 /* user.form.view.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +121,7 @@
 		10A8B28B2A0BC969009E41E8 /* register.view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = register.view.swift; sourceTree = "<group>"; };
 		10D44AE62A0BD7AB00C35003 /* google_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = google_icon.png; sourceTree = "<group>"; };
 		10D44AE82A0BDC1900C35003 /* register.form.view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = register.form.view.swift; sourceTree = "<group>"; };
+		10D44AEC2A0BE56800C35003 /* user.form.view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.form.view.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -518,6 +520,7 @@
 				10A8B28D2A0BC96E009E41E8 /* models */,
 				10A8B28B2A0BC969009E41E8 /* register.view.swift */,
 				10D44AE82A0BDC1900C35003 /* register.form.view.swift */,
+				10D44AEC2A0BE56800C35003 /* user.form.view.swift */,
 			);
 			path = register;
 			sourceTree = "<group>";
@@ -688,6 +691,7 @@
 				104DF15829CC176B00D97446 /* card-text.component.swift in Sources */,
 				104DF14229CB481A00D97446 /* pokemon.type.swift in Sources */,
 				107E331729CAE2940059F22B /* auth.state.manager.swift in Sources */,
+				10D44AED2A0BE56800C35003 /* user.form.view.swift in Sources */,
 				107E330029CA1A5A0059F22B /* pokemon.ressource.swift in Sources */,
 				107E330A29CAAF9E0059F22B /* login.view.swift in Sources */,
 				107E330F29CAC9B10059F22B /* app.navigation.swift in Sources */,
