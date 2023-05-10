@@ -8,6 +8,7 @@
 import SwiftUI;
 import AVFAudio;
 import FirebaseCore;
+import FirebaseFirestore;
 
 @main
 struct pokedexApp: App {
@@ -57,8 +58,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 			UIApplication.LaunchOptionsKey : Any
 		]? = nil
 	) -> Bool {
+	
 		FirebaseApp.configure()
-
-		return true
+		return true;
 	}
 }

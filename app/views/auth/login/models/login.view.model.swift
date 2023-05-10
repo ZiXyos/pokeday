@@ -8,10 +8,12 @@
 import Foundation;
 import Combine;
 import FirebaseAuth;
+import FirebaseFirestore;
 
 
 class LoginViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	
+	let db: Firestore = Firestore.firestore();
 	public override init(services: StateServices_P) {
 
 		super.init(services: services);
@@ -53,10 +55,34 @@ class LoginViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 			withEmail: email,
 			password: password
 		) { [weak self] authResult, error in
+			
 			guard self != nil else { return }
+			let userCollection = self?.db.collection("Users");
+			let d = userCollection?.document(Auth.auth().currentUser?.uid ?? "");
+			d?.setData([
+				String((authResult?.user.uid)!) : UserDocument(
+					account: authResult?.user.uid ?? "",
+					username: "test",
+					exp: 0,
+					level: 1
+				).dictionary
+			]);
+		
 			print(
-				"[LOG]::[REGISTER]: \(String(describing: authResult)) or \(String(describing: error))"
+				"[LOG]::[REGISTER]: \(String(describing: authResult?.user.uid)) or \(String(describing: error))"
 			);
 		}
+	}
+	
+	private func createUser(username: String, fk: String) -> [String : Any] {
+		
+		let doc = UserDocument(
+			account: fk,
+			username: username,
+			exp: 0,
+			level: 1
+		);
+		
+		return doc.dictionary;
 	}
 }
