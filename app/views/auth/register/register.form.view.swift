@@ -7,10 +7,17 @@
 
 import SwiftUI
 
+protocol RegisterFormNavigationView: AnyObject {
+	func userFormViewNavigation() -> UserFormView;
+}
+
 struct RegisterFormView: View {
+	
+	@State var nav: RegisterFormNavigationView?;
 	
 	@State var email: String = "";
 	@State var password: String = "";
+	@StateObject var viewModel: RegisterViewModel;
 
     var body: some View {
 		VStack(spacing: 20) {
@@ -114,15 +121,16 @@ struct RegisterFormView: View {
 				
 			Spacer();
 
-			Text("Continue")
-			.fontWeight(.semibold)
-			.font(.title3)
-			.padding([.horizontal], 10)
-			.frame(width: 328, height: 58)
-			.frame(maxWidth: .infinity, minHeight: 48)
-			.background(Color(red: 0.90, green: 0.90, blue: 0.90))
-			.cornerRadius(50)
-			
+			NavigationLink(destination: self.nav?.userFormViewNavigation()) {
+				Text("Continue").fontWeight(.semibold)
+					.foregroundColor(Color.white)
+					.font(.title3)
+					.padding([.horizontal], 10)
+					.frame(width: 328, height: 58)
+					.frame(maxWidth: .infinity, minHeight: 48)
+					.background(Color(red: 0.90, green: 0.90, blue: 0.90))
+					.cornerRadius(50)
+			}
 		}
 		.padding(.bottom, 20)
 		.padding(.top, 46)
@@ -133,6 +141,14 @@ struct RegisterFormView: View {
 
 struct register_form_view_Previews: PreviewProvider {
     static var previews: some View {
-		RegisterFormView();
+		RegisterFormView(
+			viewModel: RegisterViewModel(
+				services: AppState(
+					pokeSdkClient: PokeSdkClient(
+						clientOptions: ClientOptions()
+					)
+				)
+			)
+		);
     }
 }

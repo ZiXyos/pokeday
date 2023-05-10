@@ -5,9 +5,15 @@
 //  Created by Ktchoumh on 5/10/23.
 //
 
-import SwiftUI
+import SwiftUI;
+
+protocol RegisterNavigationView: AnyObject {
+	func registerFormNavigation() -> RegisterFormView;
+}
 
 struct RegisterView: View {
+	
+	@State var nav: RegisterNavigationView?;
 
     var body: some View {
 		VStack() {
@@ -73,22 +79,25 @@ struct RegisterView: View {
 					.cornerRadius(50)
 					.overlay(RoundedRectangle(cornerRadius: 50).stroke(Color(red: 0.86, green: 0.86, blue: 0.87), lineWidth: 2))
 
-					Text("Signup with E-Mail")
-						.fontWeight(.semibold)
-						.font(.callout)
-						.padding(.horizontal, 8)
-						.padding(.vertical, 10)
-						.frame(width: 328, height: 58)
-						.background(Color(red: 0.09, green: 0.24, blue: 0.65))
-						.cornerRadius(50)
-						.overlay(RoundedRectangle(cornerRadius: 50).stroke(
-							Color(
-								red: 0.09,
-								green: 0.24,
-								blue: 0.65
-							),
-							lineWidth: 2)
-						)
+					NavigationLink(destination: self.nav?.registerFormNavigation()) {
+						Text("Signup with E-Mail")
+							.fontWeight(.semibold)
+							.foregroundColor(Color.black)
+							.font(.callout)
+							.padding(.horizontal, 8)
+							.padding(.vertical, 10)
+							.frame(width: 328, height: 58)
+							.background(Color(red: 0.09, green: 0.24, blue: 0.65))
+							.cornerRadius(50)
+							.overlay(RoundedRectangle(cornerRadius: 50).stroke(
+								Color(
+									red: 0.09,
+									green: 0.24,
+									blue: 0.65
+								),
+								lineWidth: 2)
+							)
+					}
 				}
 			}
 		}

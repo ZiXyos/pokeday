@@ -5,9 +5,9 @@
 //  Created by Ktchoumh on 5/10/23.
 //
 
-import SwiftUI
+import SwiftUI;
 
-struct user_form_view: View {
+struct UserFormView: View {
 	
 	@State var username: String = "";
 
@@ -52,7 +52,7 @@ struct user_form_view: View {
 			.font(.caption)
 			
 			VStack {
-				Text("Your Sex").font(.title).fontWeight(.semibold)
+				Text("Chose Your Trainer").font(.title).fontWeight(.semibold)
 				HStack(spacing: 10) {
 					
 					VStack(spacing: 2) {
@@ -103,6 +103,6 @@ struct user_form_view: View {
 
 struct user_form_view_Previews: PreviewProvider {
     static var previews: some View {
-        user_form_view()
+        UserFormView()
     }
 }

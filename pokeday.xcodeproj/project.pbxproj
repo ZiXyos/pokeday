@@ -62,6 +62,9 @@
 		10D44AE72A0BD7AB00C35003 /* google_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10D44AE62A0BD7AB00C35003 /* google_icon.png */; };
 		10D44AE92A0BDC1900C35003 /* register.form.view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D44AE82A0BDC1900C35003 /* register.form.view.swift */; };
 		10D44AED2A0BE56800C35003 /* user.form.view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D44AEC2A0BE56800C35003 /* user.form.view.swift */; };
+		10D44AEF2A0BFBCC00C35003 /* register.viewmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D44AEE2A0BFBCC00C35003 /* register.viewmodel.swift */; };
+		10D44AF12A0C00B700C35003 /* errors.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D44AF02A0C00B700C35003 /* errors.enum.swift */; };
+		10D44AF32A0C169400C35003 /* auth.view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D44AF22A0C169400C35003 /* auth.view.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -122,6 +125,9 @@
 		10D44AE62A0BD7AB00C35003 /* google_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = google_icon.png; sourceTree = "<group>"; };
 		10D44AE82A0BDC1900C35003 /* register.form.view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = register.form.view.swift; sourceTree = "<group>"; };
 		10D44AEC2A0BE56800C35003 /* user.form.view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.form.view.swift; sourceTree = "<group>"; };
+		10D44AEE2A0BFBCC00C35003 /* register.viewmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = register.viewmodel.swift; sourceTree = "<group>"; };
+		10D44AF02A0C00B700C35003 /* errors.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = errors.enum.swift; sourceTree = "<group>"; };
+		10D44AF22A0C169400C35003 /* auth.view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = auth.view.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				1009E36A29F91FCC00C6A706 /* type-icon.enum.swift */,
+				10D44AF02A0C00B700C35003 /* errors.enum.swift */,
 			);
 			path = enums;
 			sourceTree = "<group>";
@@ -501,6 +508,7 @@
 			children = (
 				107E330829CAAF6E0059F22B /* register */,
 				107E330729CAAF660059F22B /* login */,
+				10D44AF22A0C169400C35003 /* auth.view.swift */,
 			);
 			path = auth;
 			sourceTree = "<group>";
@@ -574,6 +582,7 @@
 		10A8B28D2A0BC96E009E41E8 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				10D44AEE2A0BFBCC00C35003 /* register.viewmodel.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -684,12 +693,14 @@
 				104DF15529CB5C7100D97446 /* pokedex.card.component.swift in Sources */,
 				1026E84229D436FA00B271FD /* pokemon.entity.swift in Sources */,
 				1063098129F685EE0050A175 /* header.pokemon.swift in Sources */,
+				10D44AF12A0C00B700C35003 /* errors.enum.swift in Sources */,
 				107E330D29CAB0380059F22B /* login.view.model.swift in Sources */,
 				1026E82D29D290B100B271FD /* loading.view.swift in Sources */,
 				1026E84629D4556300B271FD /* pokeday.model.swift in Sources */,
 				104DF15029CB57BE00D97446 /* pokedex.view.model.swift in Sources */,
 				104DF15829CC176B00D97446 /* card-text.component.swift in Sources */,
 				104DF14229CB481A00D97446 /* pokemon.type.swift in Sources */,
+				10D44AF32A0C169400C35003 /* auth.view.swift in Sources */,
 				107E331729CAE2940059F22B /* auth.state.manager.swift in Sources */,
 				10D44AED2A0BE56800C35003 /* user.form.view.swift in Sources */,
 				107E330029CA1A5A0059F22B /* pokemon.ressource.swift in Sources */,
@@ -702,6 +713,7 @@
 				107E331129CACDE80059F22B /* auth.navigation.swift in Sources */,
 				1009E36B29F91FCC00C6A706 /* type-icon.enum.swift in Sources */,
 				10A8B28A2A0B912E009E41E8 /* json.tools.swift in Sources */,
+				10D44AEF2A0BFBCC00C35003 /* register.viewmodel.swift in Sources */,
 				104DF14D29CB579A00D97446 /* pokedex.view.swift in Sources */,
 				104DF14A29CB4B9D00D97446 /* pokemon.form.type.swift in Sources */,
 				10A8B28C2A0BC969009E41E8 /* register.view.swift in Sources */,
