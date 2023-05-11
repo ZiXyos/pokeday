@@ -5,11 +5,12 @@
 //  Created by Ktchoumh on 3/22/23.
 //
 
-import SwiftUI
+import SwiftUI;
+
 
 struct LoginView: View {
 	
-	@StateObject var viewModel: LoginViewModel
+	@StateObject var viewModel: LoginViewModel;
 	
 	@State var username: String = "";
 	@State var password: String = "";
@@ -30,10 +31,10 @@ struct LoginView: View {
 				.padding(.bottom, 20)
 			
 			Button("Login") {
-				self.viewModel.loginWithUsername(
-					username: self.username,
+				/*self.viewModel.register(
+					email: self.username,
 					password: self.password
-				)
+				)*/
 			}
 		}
     }

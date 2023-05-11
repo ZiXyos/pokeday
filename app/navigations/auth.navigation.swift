@@ -17,6 +17,11 @@ class AuthNavigation: ObservableObject {
 		self.stateService = stateService;
 	}
 	
+	@ViewBuilder public func authScreen() -> some View {
+		
+		AuthView(nav: self);
+	}
+	
 	@ViewBuilder public func loginScreen() -> some View {
 		LoginView(
 			viewModel: LoginViewModel(services: self.stateService)
@@ -25,7 +30,15 @@ class AuthNavigation: ObservableObject {
 	
 	@ViewBuilder public func registerScreen() -> some View {
 		
-		Text("RegisterScreen");
+		RegisterView(nav: self);
+	}
+	
+	@ViewBuilder public func registerFormNavigation() -> RegisterFormView {
+		RegisterFormView(
+			nav: self,
+			viewModel: RegisterViewModel(
+				services: self.stateService)
+		);
 	}
 }
 
@@ -36,7 +49,47 @@ struct AuthNAvigationView: View {
     var body: some View {
 		
 		NavigationStack {
-			self.nav.loginScreen();
+			self.nav.authScreen();
 		}
     }
 }
+
+extension AuthNavigation: AuthNavView {
+	
+	@ViewBuilder func registerViewNavigation() -> RegisterView {
+		RegisterView(nav: self);
+	}
+	
+	@ViewBuilder func loginViewNavigation() -> LoginView {
+		LoginView(
+			viewModel: LoginViewModel(
+				services: self.stateService
+			)
+		);
+	}
+}
+
+extension AuthNavigation: RegisterNavigationView {
+	
+	@ViewBuilder func registerFormViewNavigation() -> RegisterFormView {
+		
+		RegisterFormView(
+			nav: self,
+			viewModel: RegisterViewModel(
+				services: self.stateService
+			)
+		);
+	}
+}
+
+extension AuthNavigation: RegisterFormNavigationView {
+
+	@ViewBuilder func userFormViewNavigation() -> UserFormView {
+		UserFormView(
+			viewModel: UserFormViewModel(
+				services: self.stateService
+			)
+		);
+	}
+}
+

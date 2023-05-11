@@ -52,6 +52,21 @@
 		107E331929CAE3890059F22B /* auth.state.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E331829CAE3890059F22B /* auth.state.swift */; };
 		107E331B29CAE80F0059F22B /* state.manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E331A29CAE80F0059F22B /* state.manager.swift */; };
 		107E332029CAEC750059F22B /* template.view-model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E331F29CAEC750059F22B /* template.view-model.swift */; };
+		1089EFB72A0D239400235BA4 /* cache.tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1089EFB62A0D239400235BA4 /* cache.tools.swift */; };
+		1089EFBB2A0D321B00235BA4 /* user.form.viewmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1089EFBA2A0D321B00235BA4 /* user.form.viewmodel.swift */; };
+		10A8B27D2A03A4DB009E41E8 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 10A8B27C2A03A4DB009E41E8 /* FirebaseAuth */; };
+		10A8B27F2A03A4DB009E41E8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 10A8B27E2A03A4DB009E41E8 /* FirebaseFirestore */; };
+		10A8B2812A03A4DB009E41E8 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10A8B2802A03A4DB009E41E8 /* FirebaseFirestoreSwift */; };
+		10A8B2852A03B1F5009E41E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10A8B2842A03B1F5009E41E8 /* GoogleService-Info.plist */; };
+		10A8B2882A0B8871009E41E8 /* user.document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8B2872A0B8871009E41E8 /* user.document.swift */; };
+		10A8B28A2A0B912E009E41E8 /* json.tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8B2892A0B912E009E41E8 /* json.tools.swift */; };
+		10A8B28C2A0BC969009E41E8 /* register.view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A8B28B2A0BC969009E41E8 /* register.view.swift */; };
+		10D44AE72A0BD7AB00C35003 /* google_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 10D44AE62A0BD7AB00C35003 /* google_icon.png */; };
+		10D44AE92A0BDC1900C35003 /* register.form.view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D44AE82A0BDC1900C35003 /* register.form.view.swift */; };
+		10D44AED2A0BE56800C35003 /* user.form.view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D44AEC2A0BE56800C35003 /* user.form.view.swift */; };
+		10D44AEF2A0BFBCC00C35003 /* register.viewmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D44AEE2A0BFBCC00C35003 /* register.viewmodel.swift */; };
+		10D44AF12A0C00B700C35003 /* errors.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D44AF02A0C00B700C35003 /* errors.enum.swift */; };
+		10D44AF32A0C169400C35003 /* auth.view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D44AF22A0C169400C35003 /* auth.view.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +120,18 @@
 		107E331829CAE3890059F22B /* auth.state.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = auth.state.swift; sourceTree = "<group>"; };
 		107E331A29CAE80F0059F22B /* state.manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = state.manager.swift; sourceTree = "<group>"; };
 		107E331F29CAEC750059F22B /* template.view-model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "template.view-model.swift"; sourceTree = "<group>"; };
+		1089EFB62A0D239400235BA4 /* cache.tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cache.tools.swift; sourceTree = "<group>"; };
+		1089EFBA2A0D321B00235BA4 /* user.form.viewmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.form.viewmodel.swift; sourceTree = "<group>"; };
+		10A8B2842A03B1F5009E41E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		10A8B2872A0B8871009E41E8 /* user.document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.document.swift; sourceTree = "<group>"; };
+		10A8B2892A0B912E009E41E8 /* json.tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = json.tools.swift; sourceTree = "<group>"; };
+		10A8B28B2A0BC969009E41E8 /* register.view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = register.view.swift; sourceTree = "<group>"; };
+		10D44AE62A0BD7AB00C35003 /* google_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = google_icon.png; sourceTree = "<group>"; };
+		10D44AE82A0BDC1900C35003 /* register.form.view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = register.form.view.swift; sourceTree = "<group>"; };
+		10D44AEC2A0BE56800C35003 /* user.form.view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.form.view.swift; sourceTree = "<group>"; };
+		10D44AEE2A0BFBCC00C35003 /* register.viewmodel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = register.viewmodel.swift; sourceTree = "<group>"; };
+		10D44AF02A0C00B700C35003 /* errors.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = errors.enum.swift; sourceTree = "<group>"; };
+		10D44AF22A0C169400C35003 /* auth.view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = auth.view.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +139,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10A8B27D2A03A4DB009E41E8 /* FirebaseAuth in Frameworks */,
+				10A8B27F2A03A4DB009E41E8 /* FirebaseFirestore in Frameworks */,
+				10A8B2812A03A4DB009E41E8 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				1009E36A29F91FCC00C6A706 /* type-icon.enum.swift */,
+				10D44AF02A0C00B700C35003 /* errors.enum.swift */,
 			);
 			path = enums;
 			sourceTree = "<group>";
@@ -337,6 +368,7 @@
 		1063098829F69A080050A175 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				10D44AE52A0BD7AB00C35003 /* socials */,
 				1063098929F69A080050A175 /* type */,
 			);
 			path = assets;
@@ -371,6 +403,8 @@
 			isa = PBXGroup;
 			children = (
 				1063099329F6A4750050A175 /* ui.tools.swift */,
+				10A8B2892A0B912E009E41E8 /* json.tools.swift */,
+				1089EFB62A0D239400235BA4 /* cache.tools.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -397,6 +431,7 @@
 		107E32EA29CA07680059F22B /* app */ = {
 			isa = PBXGroup;
 			children = (
+				10A8B2842A03B1F5009E41E8 /* GoogleService-Info.plist */,
 				1009E36929F91FB400C6A706 /* enums */,
 				1063099229F6A45E0050A175 /* utils */,
 				1026E85729DC1D3500B271FD /* src */,
@@ -478,6 +513,7 @@
 			children = (
 				107E330829CAAF6E0059F22B /* register */,
 				107E330729CAAF660059F22B /* login */,
+				10D44AF22A0C169400C35003 /* auth.view.swift */,
 			);
 			path = auth;
 			sourceTree = "<group>";
@@ -494,6 +530,10 @@
 		107E330829CAAF6E0059F22B /* register */ = {
 			isa = PBXGroup;
 			children = (
+				10A8B28D2A0BC96E009E41E8 /* models */,
+				10A8B28B2A0BC969009E41E8 /* register.view.swift */,
+				10D44AE82A0BDC1900C35003 /* register.form.view.swift */,
+				10D44AEC2A0BE56800C35003 /* user.form.view.swift */,
 			);
 			path = register;
 			sourceTree = "<group>";
@@ -528,11 +568,37 @@
 		107E331E29CAEC580059F22B /* types */ = {
 			isa = PBXGroup;
 			children = (
+				10A8B2862A0B8838009E41E8 /* documents */,
 				104DF14529CB4AD100D97446 /* utils */,
 				104DF14029CB479600D97446 /* pokemons */,
 				107E331F29CAEC750059F22B /* template.view-model.swift */,
 			);
 			path = types;
+			sourceTree = "<group>";
+		};
+		10A8B2862A0B8838009E41E8 /* documents */ = {
+			isa = PBXGroup;
+			children = (
+				10A8B2872A0B8871009E41E8 /* user.document.swift */,
+			);
+			path = documents;
+			sourceTree = "<group>";
+		};
+		10A8B28D2A0BC96E009E41E8 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				10D44AEE2A0BFBCC00C35003 /* register.viewmodel.swift */,
+				1089EFBA2A0D321B00235BA4 /* user.form.viewmodel.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		10D44AE52A0BD7AB00C35003 /* socials */ = {
+			isa = PBXGroup;
+			children = (
+				10D44AE62A0BD7AB00C35003 /* google_icon.png */,
+			);
+			path = socials;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -552,6 +618,9 @@
 			);
 			name = pokeday;
 			packageProductDependencies = (
+				10A8B27C2A03A4DB009E41E8 /* FirebaseAuth */,
+				10A8B27E2A03A4DB009E41E8 /* FirebaseFirestore */,
+				10A8B2802A03A4DB009E41E8 /* FirebaseFirestoreSwift */,
 			);
 			productName = pokedex;
 			productReference = 107E32E829CA07680059F22B /* pokeday.app */;
@@ -583,6 +652,7 @@
 			mainGroup = 107E32DF29CA07680059F22B;
 			packageReferences = (
 				104DF15E29CC87B700D97446 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				10A8B27B2A03A4DB009E41E8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 107E32E929CA07680059F22B /* Products */;
 			projectDirPath = "";
@@ -603,6 +673,8 @@
 				1026E85E29DC1D7500B271FD /* pokemon_rb_intro.mp3 in Resources */,
 				107E32F329CA076A0059F22B /* Preview Assets.xcassets in Resources */,
 				107E32F029CA076A0059F22B /* Assets.xcassets in Resources */,
+				10D44AE72A0BD7AB00C35003 /* google_icon.png in Resources */,
+				10A8B2852A03B1F5009E41E8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,6 +687,7 @@
 			files = (
 				1026E84D29D55A6300B271FD /* region.res.dto.swift in Sources */,
 				107E32FD29CA0A990059F22B /* http-client.swift in Sources */,
+				10A8B2882A0B8871009E41E8 /* user.document.swift in Sources */,
 				107E32FB29CA07AA0059F22B /* client.swift in Sources */,
 				104DF14829CB4B1300D97446 /* api-ressource.util.type.swift in Sources */,
 				107E332029CAEC750059F22B /* template.view-model.swift in Sources */,
@@ -626,29 +699,38 @@
 				104DF15529CB5C7100D97446 /* pokedex.card.component.swift in Sources */,
 				1026E84229D436FA00B271FD /* pokemon.entity.swift in Sources */,
 				1063098129F685EE0050A175 /* header.pokemon.swift in Sources */,
+				10D44AF12A0C00B700C35003 /* errors.enum.swift in Sources */,
 				107E330D29CAB0380059F22B /* login.view.model.swift in Sources */,
 				1026E82D29D290B100B271FD /* loading.view.swift in Sources */,
 				1026E84629D4556300B271FD /* pokeday.model.swift in Sources */,
 				104DF15029CB57BE00D97446 /* pokedex.view.model.swift in Sources */,
 				104DF15829CC176B00D97446 /* card-text.component.swift in Sources */,
 				104DF14229CB481A00D97446 /* pokemon.type.swift in Sources */,
+				10D44AF32A0C169400C35003 /* auth.view.swift in Sources */,
 				107E331729CAE2940059F22B /* auth.state.manager.swift in Sources */,
+				10D44AED2A0BE56800C35003 /* user.form.view.swift in Sources */,
 				107E330029CA1A5A0059F22B /* pokemon.ressource.swift in Sources */,
 				107E330A29CAAF9E0059F22B /* login.view.swift in Sources */,
 				107E330F29CAC9B10059F22B /* app.navigation.swift in Sources */,
+				1089EFBB2A0D321B00235BA4 /* user.form.viewmodel.swift in Sources */,
 				1063099429F6A4750050A175 /* ui.tools.swift in Sources */,
 				1063097E29F00C920050A175 /* pokemon.viewmodel.swift in Sources */,
 				1026E85329DBFDE000B271FD /* audio.manager.swift in Sources */,
 				107E330329CA1CED0059F22B /* pokemon.res.dto.swift in Sources */,
 				107E331129CACDE80059F22B /* auth.navigation.swift in Sources */,
 				1009E36B29F91FCC00C6A706 /* type-icon.enum.swift in Sources */,
+				10A8B28A2A0B912E009E41E8 /* json.tools.swift in Sources */,
+				10D44AEF2A0BFBCC00C35003 /* register.viewmodel.swift in Sources */,
 				104DF14D29CB579A00D97446 /* pokedex.view.swift in Sources */,
 				104DF14A29CB4B9D00D97446 /* pokemon.form.type.swift in Sources */,
+				10A8B28C2A0BC969009E41E8 /* register.view.swift in Sources */,
 				107E331B29CAE80F0059F22B /* state.manager.swift in Sources */,
 				1026E84029D436EF00B271FD /* user.entity.swift in Sources */,
+				1089EFB72A0D239400235BA4 /* cache.tools.swift in Sources */,
 				1026E84B29D557C800B271FD /* generation.ressource.swift in Sources */,
 				1009E37329F9268D00C6A706 /* pills.pokemon.button.swift in Sources */,
 				1009E36D29F9235900C6A706 /* pills.type.button.swift in Sources */,
+				10D44AE92A0BDC1900C35003 /* register.form.view.swift in Sources */,
 				104DF13F29CB0F4800D97446 /* tab.navigation.swift in Sources */,
 				104DF14429CB492400D97446 /* pokemon.ability.type.swift in Sources */,
 				107E32EC29CA07680059F22B /* pokedayApp.swift in Sources */,
@@ -869,7 +951,33 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		10A8B27B2A03A4DB009E41E8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		10A8B27C2A03A4DB009E41E8 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10A8B27B2A03A4DB009E41E8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		10A8B27E2A03A4DB009E41E8 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10A8B27B2A03A4DB009E41E8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		10A8B2802A03A4DB009E41E8 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10A8B27B2A03A4DB009E41E8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		1026E84729D5489200B271FD /* AppModel.xcdatamodeld */ = {
