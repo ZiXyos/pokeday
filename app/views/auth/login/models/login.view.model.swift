@@ -7,10 +7,13 @@
 
 import Foundation;
 import Combine;
+import FirebaseAuth;
+import FirebaseFirestore;
 
 
 class LoginViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	
+	let db: Firestore = Firestore.firestore();
 	public override init(services: StateServices_P) {
 
 		super.init(services: services);
@@ -21,7 +24,13 @@ class LoginViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		password: String
 	) -> Void {
 
-		self.services.authManager.login(token: username);
+		Auth.auth().signIn(
+			withEmail: username,
+			password: password
+		) { [weak self] authResult, error in
+			guard let strongSelf = self else { return }
+			strongSelf.services.authManager.login(token: username);
+		}
 	}
 	
 	public func loginWithEmail(
@@ -31,6 +40,7 @@ class LoginViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		
 		print("[LOG]: Logging In with Email !!!");
 	}
+	
 	
 	public func logingWithGoogle() -> Void {
 		

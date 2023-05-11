@@ -6,11 +6,16 @@
 //
 
 import Foundation;
-import CoreData;
 
-public final class UserEntity: NSManagedObject {
+public class UserEntity {
 
-	@NSManaged var uuid: NSUUID;
-	@NSManaged var name: String;
-	@NSManaged var level: Int;
+	var uuid: NSUUID = NSUUID();
+	var account: String;
+	var username: String = "";
+	var exp: Int64 = 0;
+	var level: Int = 1;
+	
+	init (accountId: String) {
+		self.account = accountId;
+	}
 }
