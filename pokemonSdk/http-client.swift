@@ -94,8 +94,6 @@ class HttpClient {
 		params: Optional<[URLQueryItem]>
 	) async throws -> T {
 		
-		print(route);
-
 		let ret: T = try await self.req(
 			requestOptions: RequestOptions(
 				path: route,

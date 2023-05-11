@@ -46,7 +46,11 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 			for v in res.pokemon_species {
 
 				let id = URL(string: v.url)?.lastPathComponent ?? "";
-				try await self.setRemotePokemon(id: id);
+				if self.appCache[String(describing: id)] == nil {
+					try await self.setRemotePokemon(id: id);
+				}
+				
+				print(self.appCache[String(describing: id)]?.getData().name as Any)
 			}
 		}
 	}
