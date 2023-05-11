@@ -85,7 +85,11 @@ extension AuthNavigation: RegisterNavigationView {
 extension AuthNavigation: RegisterFormNavigationView {
 
 	@ViewBuilder func userFormViewNavigation() -> UserFormView {
-		UserFormView();
+		UserFormView(
+			viewModel: UserFormViewModel(
+				services: self.stateService
+			)
+		);
 	}
 }
 

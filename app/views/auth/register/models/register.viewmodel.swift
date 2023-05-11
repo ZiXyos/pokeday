@@ -24,13 +24,19 @@ class RegisterViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 			withEmail: email,
 			password: password
 		) { [weak self] authResult, error in
-
-			if error != nil {
+			guard let strongSelf = self else {
 				print(FireBaseRegisterError.unknown);
 				return;
 			}
-			print(
-				"[LOG]::[REGISTER]: \(String(describing: authResult?.user.uid))"
+			
+			guard let userResult = authResult?.user else {
+				print(FireBaseRegisterError.unknown);
+				return
+			}
+			print("[LOG::RegisterViewModel::createAccount]: \(userResult.uid)")
+			strongSelf.services.appManager.setDefault(
+				.token,
+				value: userResult.uid
 			);
 		}
 	}

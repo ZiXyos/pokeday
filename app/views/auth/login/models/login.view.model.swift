@@ -24,7 +24,13 @@ class LoginViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		password: String
 	) -> Void {
 
-		self.services.authManager.login(token: username);
+		Auth.auth().signIn(
+			withEmail: username,
+			password: password
+		) { [weak self] authResult, error in
+			guard let strongSelf = self else { return }
+			strongSelf.services.authManager.login(token: username);
+		}
 	}
 	
 	public func loginWithEmail(
@@ -44,45 +50,5 @@ class LoginViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	public func forgotPassword(username: String) -> Void {
 		
 		print("[LOG]: Forgot Password");
-	}
-	
-	public func register(
-		email: String,
-		password: String
-	) -> Void {
-
-		Auth.auth().createUser(
-			withEmail: email,
-			password: password
-		) { [weak self] authResult, error in
-			
-			guard self != nil else { return }
-			let userCollection = self?.db.collection("Users");
-			let d = userCollection?.document(Auth.auth().currentUser?.uid ?? "");
-			d?.setData([
-				String((authResult?.user.uid)!) : UserDocument(
-					account: authResult?.user.uid ?? "",
-					username: "test",
-					exp: 0,
-					level: 1
-				).dictionary
-			]);
-
-			print(
-				"[LOG]::[REGISTER]: \(String(describing: authResult?.user.uid)) or \(String(describing: error))"
-			);
-		}
-	}
-	
-	private func createUser(username: String, fk: String) -> [String : Any] {
-		
-		let doc = UserDocument(
-			account: fk,
-			username: username,
-			exp: 0,
-			level: 1
-		);
-		
-		return doc.dictionary;
 	}
 }

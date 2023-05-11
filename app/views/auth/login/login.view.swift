@@ -31,10 +31,10 @@ struct LoginView: View {
 				.padding(.bottom, 20)
 			
 			Button("Login") {
-				self.viewModel.register(
+				/*self.viewModel.register(
 					email: self.username,
 					password: self.password
-				)
+				)*/
 			}
 		}
     }

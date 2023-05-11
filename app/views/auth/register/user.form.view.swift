@@ -10,6 +10,7 @@ import SwiftUI;
 struct UserFormView: View {
 	
 	@State var username: String = "";
+	@StateObject var viewModel: UserFormViewModel;
 
 	var body: some View {
 		
@@ -31,7 +32,6 @@ struct UserFormView: View {
 					.keyboardType(.default)
 					.padding(.vertical, 14)
 					.padding(.leading, 16)
-					.padding(.trailing, 259)
 					.frame(width: 350, height: 52)
 					.cornerRadius(5)
 					.overlay(
@@ -89,8 +89,9 @@ struct UserFormView: View {
 			
 			Spacer();
 			
-			Text("Finish")
-			.fontWeight(.semibold)
+			Button("Finish") {
+				self.viewModel.createUser(username: self.username);
+			}.fontWeight(.semibold)
 			.font(.title3)
 			.padding(.horizontal, 8)
 			.padding(.vertical, 10)
@@ -103,6 +104,14 @@ struct UserFormView: View {
 
 struct user_form_view_Previews: PreviewProvider {
     static var previews: some View {
-        UserFormView()
+        UserFormView(
+			viewModel: UserFormViewModel(
+				services: AppState(
+					pokeSdkClient: PokeSdkClient(
+						clientOptions: ClientOptions()
+					)
+				)
+			)
+		);
     }
 }

@@ -9,7 +9,8 @@ import Foundation
 
 struct UserDocument: Codable {
 	
-	let account: String //foreign key ( as KP )
+	let uuid: String;
+	let account: String;
 	let username: String;
 	let exp: Int64;
 	let level: Int16;
