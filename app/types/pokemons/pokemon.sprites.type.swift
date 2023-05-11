@@ -8,7 +8,6 @@
 import Foundation
 public struct PokemonSprites: Codable {
 	
-	
 	public let front_default: String;
 	public let front_shiny: String;
 	public let front_female: String;

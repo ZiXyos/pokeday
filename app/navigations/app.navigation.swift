@@ -36,6 +36,8 @@ class AppNavigation: ObservableObject {
 	}
 	
 	public func setBindings() {
+		
+		print(self.appServices.authManager.authState.isLogged);
 		   
 		   self.appServices.authManager.authState.$isLogged.sink {
 			   
@@ -43,7 +45,7 @@ class AppNavigation: ObservableObject {
 			   
 			   if value == true {
 				   
-				   self?.screen = .tab;
+				   self?.screen = .load;
 			   } else {
 				   self?.screen = .auth;
 			   }

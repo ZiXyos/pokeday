@@ -10,7 +10,11 @@ import FirebaseFirestore;
 
 class UserFormViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	
+	let appCache: NSCache<NSString, CacheEntry<UserDocument>>;
 	override init(services: StateServices_P) {
+		
+		self.appCache = NSCache();
+		
 		super.init(services: services);
 	}
 	
@@ -39,8 +43,17 @@ class UserFormViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		doc.setData([
 			accountId : user.dictionary
 		]);
+		let cachedItem = CacheEntry<UserDocument>(
+			status: .ready(user),
+			value: user,
+			key: String(describing: user.uuid)
+		);
 
-		self.services.appCache[user.uuid] = .ready(user);
-		self.services.authManager.authState.isLogged.toggle();
+		self.appCache[user.uuid] = cachedItem;
+		self.services.authManager.authState.isLogged = true;
+		self.services.appManager.setDefault(
+			.isAuth,
+			value: self.services.authManager.authState.isLogged
+		);
 	}
 }

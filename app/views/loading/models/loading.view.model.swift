@@ -13,6 +13,7 @@ import AVFAudio;
 class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	
 	private let viewContext = AppController.shared.viewContext;
+	let appCache: NSCache<NSString, CacheEntry<Pokemon_s>>;
 	
 	public let player: AudioManager;
 	
@@ -28,7 +29,9 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 			fatalError("error finding files");
 		}
 		print("[LOG]: \(url)");
+	
 		self.player = AudioManager(url: url);
+		self.appCache = NSCache();
 		super.init(services: services);
 	}
 	
@@ -50,18 +53,6 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 
 	public func loadLocalData() async throws -> Void {
 		
-		self.fetchLocalPokemon();
-	}
-	
-	private func fetchLocalPokemon() {
-		
-		let req = NSFetchRequest<Pokemon>(entityName: "Pokemon");
-		
-		do {
-			self.pokemons = try viewContext.fetch(req);
-		} catch {
-			fatalError(error.localizedDescription);
-		}
 	}
 	
 	public func play() -> Void {
@@ -76,14 +67,26 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		let res = try await self.services.pokeApiSdk.pokemons.getPokemonById(
 			pokemonId: id
 		);
+
+		let pokemon = Pokemon_s(
+			id: res.id,
+			name: res.name,
+			base_experience: res.base_experience,
+			height: res.height,
+			is_default: res.is_default,
+			order: true,
+			weight: res.weight,
+			abilities: [PokemonAbility(id: 1, name: "FireBolt", is_main_series: true)],
+			type: ["Fire", "Fly"]
+		);
 		
-		let pokemon = Pokemon(context: self.viewContext);
-		pokemon.id = Int64(res.id);
-		pokemon.name = res.name;
-		pokemon.height = Int32(res.height);
-		pokemon.base_experience = Int32(res.base_experience);
-		//await self.save();
-		print("[LOG::FETCHED::POKEMON]: \(res.name)");
+		let cachedItem = CacheEntry<Pokemon_s>(
+			status: .ready(pokemon),
+			value: pokemon,
+			key: String(describing: pokemon.id)
+		);
+		self.appCache[String(pokemon.id)] = cachedItem;
+		
 	}
 	
 	private func isLimit(generation: Int) -> Bool {
@@ -96,15 +99,5 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	
 	private func setLimitGen(gen: Int) -> Void {
 		self.limitGen = gen;
-	}
-	
-	private func save() async -> Void {
-
-		do {
-			try self.viewContext.save()
-		}catch {
-			print("Error saving");
-			fatalError(error.localizedDescription);
-		}
 	}
 }

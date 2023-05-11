@@ -18,14 +18,14 @@ struct LoadingView: View {
 	}
 	
 	var body: some View {
-		if isLoading {
+		if !isLoading {
 			Button("TODO Loader") {
 				let _ = self.viewModel.play();
 			}.onAppear {
 				Task {
 					do {
 						try await self.viewModel.getRemoteData();
-						self.isLoading = false;
+						self.isLoading = true;
 						print("[LOG::TASK]: \(self.isLoading)");
 					} catch {
 						print(error);
@@ -34,7 +34,7 @@ struct LoadingView: View {
 				}
 			}
 		} else {
-		
+			Text("mmain ")
 		}
 	}
 }
