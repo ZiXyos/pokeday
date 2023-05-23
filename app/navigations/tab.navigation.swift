@@ -29,9 +29,7 @@ class TabNavigation: ObservableObject {
 	}
 	
 	@ViewBuilder func profilScreen() -> some View {
-		Text(
-			"welcome trainer " + (self.stateService.appManager.getDefault(.token) ?? "user")
-		);
+		Text("profil");
 	}
 }
 

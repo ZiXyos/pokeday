@@ -13,12 +13,14 @@ enum AppNavigationScreen {
 	
 	case auth;
 	case tab;
+	case load
 }
 
 class AppNavigation: ObservableObject {
 	
 	@Published var screen: AppNavigationScreen = .auth;
 	private var anyCancellable = Set<AnyCancellable>();
+	private var appCache: NSCache<NSString, CacheEntry<String>> = NSCache();
 	private var appServices: StateServices_P;
 	
 	lazy private var authNav: AuthNavigation = {
@@ -35,6 +37,16 @@ class AppNavigation: ObservableObject {
 	}
 	
 	public func setBindings() {
+
+		let cachedUser = self.appCache.object(forKey: NSString(string: "uuid"))
+		if cachedUser != nil {
+
+			self.appServices.authManager.authState.isLogged.toggle();
+			self.appServices.appManager.setDefault(
+				.isAuth,
+				value: self.appServices.authManager.authState.isLogged
+			);
+		}
 		   
 		   self.appServices.authManager.authState.$isLogged.sink {
 			   
@@ -42,12 +54,16 @@ class AppNavigation: ObservableObject {
 			   
 			   if value == true {
 				   
-				   self?.screen = .tab;
+				   self?.screen = .load;
 			   } else {
 				   self?.screen = .auth;
 			   }
 		   }.store(in: &self.anyCancellable)
 	   }
+	
+	public func setBinding(bind: AppNavigationScreen) {
+		self.screen = bind;
+	}
 	
 	@ViewBuilder public func authScreen() -> some View {
 		
@@ -82,8 +98,10 @@ public struct AppNavigationView: View {
 			
 		case .auth:
 			self.appNavigation.authScreen();
-		case .tab:
+		case .load:
 			self.appNavigation.loadingScreen();
+		case .tab:
+			self.appNavigation.tabScreen();
 		}
 	}
 }

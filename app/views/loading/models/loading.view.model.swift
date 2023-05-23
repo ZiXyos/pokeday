@@ -13,11 +13,13 @@ import AVFAudio;
 class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	
 	private let viewContext = AppController.shared.viewContext;
+	let appCache: NSCache<NSString, CacheEntry<Dictionary<Int, [Pokemon_s]>>>;
 	
 	public let player: AudioManager;
 	
-	@Published var pokemons: [Pokemon] = [];
-	var limitGen: Int = 3;
+	var pokemons = Dictionary<Int, [Pokemon_s]>();
+	var pkmnArr: [Pokemon_s] = [];
+	var limitGen: Int = 1;
 	
 	public override init(services: StateServices_P) {
 		
@@ -28,41 +30,73 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 			fatalError("error finding files");
 		}
 		print("[LOG]: \(url)");
+	
 		self.player = AudioManager(url: url);
+		self.appCache = NSCache();
 		super.init(services: services);
 	}
 	
 	public func getRemoteData() async throws -> Void {
 
 		for i in 1...self.limitGen {
-
-			let res = try await self.services.pokeApiSdk.gens.getGenById(
-				id: String(i)
-			);
 			
-			for v in res.pokemon_species {
-
-				let id = URL(string: v.url)?.lastPathComponent ?? "";
-				try await self.setRemotePokemon(id: id);
+			if self.services.pokemonCache.object(
+				forKey: NSString(
+					string: "pokemon-cached-region"
+				)
+			) == nil {
+				
+				let res = try await self.services.pokeApiSdk.gens.getGenById( //these request could be skipped
+					id: String(i)
+				);
+				
+				for v in res.pokemon_species {
+					
+					let id = URL(string: v.url)?.lastPathComponent ?? "";
+					try await self.setRemotePokemon(id: id);
+				}
+				
+				self.pokemons[i] = self.pkmnArr;
 			}
 		}
-	}
+		
+		self.services.pokemonCache.setObject(
+			CacheEntry(
+				status: .ready(self.pokemons),
+				value: self.pokemons,
+				key: "pokemon-cached-region"
+			),
+			forKey: "pokemon-cached-region" as NSString
+		);
 
-	public func loadLocalData() async throws -> Void {
-		
-		self.fetchLocalPokemon();
-	}
-	
-	private func fetchLocalPokemon() {
-		
-		let req = NSFetchRequest<Pokemon>(entityName: "Pokemon");
-		
-		do {
-			self.pokemons = try viewContext.fetch(req);
-		} catch {
-			fatalError(error.localizedDescription);
+		if let _ = self.services.pokemonCache.object(forKey: "pokemon-cached-region" as NSString) {
+			self.pkmnArr.removeAll();
+		} else {
+			throw CacheError.emptyEntity(entityType: type(of: self.pokemons))
 		}
 	}
+
+	private func setRemotePokemon(id: String) async throws -> Void {
+
+		let res = try await self.services.pokeApiSdk.pokemons.getPokemonById(
+			pokemonId: id
+		);
+
+		let pokemon = Pokemon_s(
+			id: res.id,
+			name: res.name,
+			base_experience: res.base_experience,
+			height: res.height,
+			is_default: res.is_default,
+			order: true,
+			weight: res.weight,
+			abilities: [PokemonAbility(id: 1, name: "FireBolt", is_main_series: true)],
+			type: ["Fire", "Fly"]
+		);
+
+		self.pkmnArr.append(pokemon);
+	}
+	
 	
 	public func play() -> Void {
 		
@@ -71,20 +105,6 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		let _ = self.player.play();
 	}
 	
-	private func setRemotePokemon(id: String) async throws -> Void {
-		
-		let res = try await self.services.pokeApiSdk.pokemons.getPokemonById(
-			pokemonId: id
-		);
-		
-		let pokemon = Pokemon(context: self.viewContext);
-		pokemon.id = Int64(res.id);
-		pokemon.name = res.name;
-		pokemon.height = Int32(res.height);
-		pokemon.base_experience = Int32(res.base_experience);
-		//await self.save();
-		print("[LOG::FETCHED::POKEMON]: \(res.name)");
-	}
 	
 	private func isLimit(generation: Int) -> Bool {
 
@@ -96,15 +116,5 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	
 	private func setLimitGen(gen: Int) -> Void {
 		self.limitGen = gen;
-	}
-	
-	private func save() async -> Void {
-
-		do {
-			try self.viewContext.save()
-		}catch {
-			print("Error saving");
-			fatalError(error.localizedDescription);
-		}
 	}
 }
