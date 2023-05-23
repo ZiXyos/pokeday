@@ -147,6 +147,7 @@ final class Cache<K: NSString, T: CacheEntry<V>, V: Encodable> {
 extension NSCache where KeyType == NSString, ObjectType == CacheEntry<Pokemon_s> {
 	
 	subscript(key: String) -> CacheEntry<Pokemon_s>? {
+	
 		  get {
 			  return self.object(forKey: key as NSString)
 		  }

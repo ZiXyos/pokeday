@@ -20,6 +20,7 @@ class AppNavigation: ObservableObject {
 	
 	@Published var screen: AppNavigationScreen = .auth;
 	private var anyCancellable = Set<AnyCancellable>();
+	private var appCache: NSCache<NSString, CacheEntry<String>> = NSCache();
 	private var appServices: StateServices_P;
 	
 	lazy private var authNav: AuthNavigation = {
@@ -39,12 +40,11 @@ class AppNavigation: ObservableObject {
 	
 		let res = self.getUser();
 		switch res {
-		case .success(let user):
-			self.storePersistentUser(user: user);
-		case .failure(_):
-			break;
+			case .success(let user):
+				self.storePersistentUser(user: user);
+			case .failure(_):
+				break;
 		}
-
 		   self.appServices.authManager.authState.$isLogged.sink {
 			   
 			   [weak self] (value) in

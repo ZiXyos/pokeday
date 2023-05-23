@@ -14,7 +14,6 @@ class UserFormViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	override init(services: StateServices_P) {
 		
 		self.appCache = NSCache();
-		
 		super.init(services: services);
 	}
 	

@@ -112,19 +112,18 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		}
 	}
 	
-	
 	public func play() -> Void {
 		
 		self.player.initPlayer();
 		let _ = self.player.play();
 	}
+
 	public func stop() -> Void {
 		if self.player.isPlaying() {
 			self.player.stop();
 		}
 	}
-	
-	
+
 	private func isLimit(generation: Int) -> Bool {
 
 		if limitGen == generation {
