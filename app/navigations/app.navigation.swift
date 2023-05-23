@@ -40,18 +40,7 @@ class AppNavigation: ObservableObject {
 		let res = self.getUser();
 		switch res {
 		case .success(let user):
-			
-			let cachedItem = CacheEntry<UserDocument>(
-				status: .ready(user),
-				value: user,
-				key: String(describing: user.uuid)
-			);
-			self.appServices.userCache.setObject(cachedItem, forKey: user.uuid as NSString);
-			self.appServices.authManager.authState.isLogged.toggle();
-			self.appServices.appManager.setDefault(
-				.isAuth,
-				value: self.appServices.authManager.authState.isLogged
-			);
+			self.storePersistentUser(user: user);
 		case .failure(_):
 			break;
 		}
@@ -100,6 +89,20 @@ extension AppNavigation {
 
 	func getUser() -> Result<UserDocument, FileError> {
 		return getCacheOnDiskValue(withName: "user")
+	}
+	
+	func storePersistentUser(user: UserDocument) -> Void {
+		let cachedItem = CacheEntry<UserDocument>(
+			status: .ready(user),
+			value: user,
+			key: String(describing: user.uuid)
+		);
+		self.appServices.userCache.setObject(cachedItem, forKey: user.uuid as NSString);
+		self.appServices.authManager.authState.isLogged.toggle();
+		self.appServices.appManager.setDefault(
+			.isAuth,
+			value: self.appServices.authManager.authState.isLogged
+		);
 	}
 }
 
