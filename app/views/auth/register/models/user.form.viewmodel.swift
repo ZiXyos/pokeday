@@ -14,7 +14,6 @@ class UserFormViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	override init(services: StateServices_P) {
 		
 		self.appCache = NSCache();
-		
 		super.init(services: services);
 	}
 	
@@ -42,6 +41,7 @@ class UserFormViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		doc.setData([
 			accountId : user.dictionary
 		]);
+
 		let cachedItem = CacheEntry<UserDocument>(
 			status: .ready(user),
 			value: user,

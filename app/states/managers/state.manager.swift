@@ -20,6 +20,7 @@ protocol StateServices_P {
 		NSString,
 		CacheEntry<UserDocument>
 	> { get set }
+
 }
 
 class AppState: StateServices_P {

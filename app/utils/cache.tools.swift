@@ -80,4 +80,3 @@ extension NSCache where KeyType == NSString, ObjectType == CacheEntry<UserDocume
 		}
 	}
 }
-

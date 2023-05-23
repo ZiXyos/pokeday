@@ -11,6 +11,7 @@ import FirebaseAuth;
 class RegisterViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	
 	let appCache: NSCache<NSString, CacheEntry<String>> = NSCache();
+
 	override init(services: StateServices_P) {
 		
 		super.init(services: services);
@@ -31,6 +32,7 @@ class RegisterViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 			}
 			
 			guard let userResult = authResult?.user else {
+
 				print("\(String(describing: authResult))")
 				print(FireBaseRegisterError.userAlreadyExist(username: email));
 				return
