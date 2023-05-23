@@ -133,14 +133,14 @@ struct RegisterFormView: View {
 					.frame(maxWidth: .infinity, minHeight: 48)
 					.background(Color(red: 0.90, green: 0.90, blue: 0.90))
 					.cornerRadius(50)
-			}
+			}.simultaneousGesture(TapGesture().onEnded {
+				self.viewModel.createAccount(
+				 email: self.email,
+				 password: self.password)
+		 })
 			.padding(.horizontal, 8)
 			.padding(.vertical, 10)
-		}.simultaneousGesture(TapGesture().onEnded {
-			self.viewModel.createAccount(
-				email: self.email,
-				password: self.password)
-		}).padding(.bottom, 20)
+		}.padding(.bottom, 20)
 		.padding(.top, 46)
 		.frame(width: 360, height: 800)
     }

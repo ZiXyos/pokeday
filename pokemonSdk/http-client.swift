@@ -70,6 +70,8 @@ class HttpClient {
 		) else {
 			throw RequestError.invalidUrl("invalid url");
 		}
+		urlSession.configuration.timeoutIntervalForRequest = 60;
+		urlSession.configuration.timeoutIntervalForRequest = 60;
 		
 		let req = try self.configureMethod(
 			url: url,
@@ -94,8 +96,6 @@ class HttpClient {
 		params: Optional<[URLQueryItem]>
 	) async throws -> T {
 		
-		print(route);
-
 		let ret: T = try await self.req(
 			requestOptions: RequestOptions(
 				path: route,

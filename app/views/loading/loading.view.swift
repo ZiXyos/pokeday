@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoadingView: View {
     
-	@State var isLoading = true;
+	@State var isLoading = false;
 	private let viewModel: LoadingViewModel;
 	
 	public init(viewModel: LoadingViewModel) {
@@ -18,18 +18,14 @@ struct LoadingView: View {
 	}
 	
 	var body: some View {
-		if isLoading {
+		if !isLoading {
 			Button("TODO Loader") {
-				
-
 				let _ = self.viewModel.play();
-				
 			}.onAppear {
 				Task {
 					do {
 						try await self.viewModel.getRemoteData();
-						self.isLoading = false;
-						print("[LOG::TASK]: \(self.isLoading)");
+						self.isLoading = true;
 					} catch {
 						print(error);
 						fatalError(error.localizedDescription);
@@ -37,7 +33,11 @@ struct LoadingView: View {
 				}
 			}
 		} else {
-			Text("HELLO I'LL PUSH NAV");
+			TabNavigationView(
+				nav: TabNavigation(
+					stateService: self.viewModel.services
+				)
+			);
 		}
 	}
 }

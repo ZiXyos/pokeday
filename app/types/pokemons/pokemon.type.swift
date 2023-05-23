@@ -17,6 +17,7 @@ public struct Pokemon_s: Codable {
 	var order: Bool;
 	var weight: Int;
 	var abilities: [PokemonAbility];
-	let forms: [String];
+	// let forms: [PokemonForm];
 	let type: [String];
+	// let sprites: PokemonSprites;
 }

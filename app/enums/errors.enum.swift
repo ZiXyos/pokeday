@@ -16,3 +16,8 @@ enum FireBaseRegisterError: Error {
 enum AppStateError: Error {
 	case tokenNotFound;
 }
+
+enum CacheError<T>: Error {
+
+	case emptyEntity(entityType: T.Type);
+}

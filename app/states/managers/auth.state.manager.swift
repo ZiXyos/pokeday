@@ -36,7 +36,6 @@ struct AuthStateManager: AuthStateManager_P {
 			.token,
 			value: self.authState.usertoken!
 		);
-		
 	}
 	
 	public func logout() {
