@@ -20,7 +20,6 @@ class AppNavigation: ObservableObject {
 	
 	@Published var screen: AppNavigationScreen = .auth;
 	private var anyCancellable = Set<AnyCancellable>();
-	private var appCache: NSCache<NSString, CacheEntry<String>> = NSCache();
 	private var appServices: StateServices_P;
 	
 	lazy private var authNav: AuthNavigation = {
@@ -37,17 +36,26 @@ class AppNavigation: ObservableObject {
 	}
 	
 	public func setBindings() {
-
-		let cachedUser = self.appCache.object(forKey: NSString(string: "uuid"))
-		if cachedUser != nil {
-
+	
+		let res = self.getUser();
+		switch res {
+		case .success(let user):
+			
+			let cachedItem = CacheEntry<UserDocument>(
+				status: .ready(user),
+				value: user,
+				key: String(describing: user.uuid)
+			);
+			self.appServices.userCache.setObject(cachedItem, forKey: user.uuid as NSString);
 			self.appServices.authManager.authState.isLogged.toggle();
 			self.appServices.appManager.setDefault(
 				.isAuth,
 				value: self.appServices.authManager.authState.isLogged
 			);
+		case .failure(_):
+			break;
 		}
-		   
+
 		   self.appServices.authManager.authState.$isLogged.sink {
 			   
 			   [weak self] (value) in
@@ -85,6 +93,13 @@ class AppNavigation: ObservableObject {
 				)
 			)
 		);
+	}
+}
+
+extension AppNavigation {
+
+	func getUser() -> Result<UserDocument, FileError> {
+		return getCacheOnDiskValue(withName: "user")
 	}
 }
 

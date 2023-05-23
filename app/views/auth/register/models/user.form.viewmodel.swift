@@ -49,6 +49,7 @@ class UserFormViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		);
 
 		self.appCache.setObject(cachedItem, forKey: NSString(string: user.uuid));
+		cachedItem.saveToDisk(withName: "user");
 		self.services.authManager.login(token: user.uuid);
 	}
 }

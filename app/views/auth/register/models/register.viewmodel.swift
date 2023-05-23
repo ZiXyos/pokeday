@@ -30,12 +30,13 @@ class RegisterViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 				return;
 			}
 			
-			guard let userResult = authResult?.user else {
-				print("\(String(describing: authResult))")
-				print(FireBaseRegisterError.userAlreadyExist(username: email));
-				return
+			guard let res = authResult else {
+				print(FireBaseRegisterError.unknown);
+				return;
 			}
-			print("[LOG::RegisterViewModel::createAccount]: \(userResult.uid)")
+			
+			let userResult = res.user;
+			
 			let cachedItem = CacheEntry<String>(
 				status: .ready(userResult.uid),
 				value: userResult.uid,
