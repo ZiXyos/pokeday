@@ -13,12 +13,13 @@ import AVFAudio;
 class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	
 	private let viewContext = AppController.shared.viewContext;
-	let appCache: NSCache<NSString, CacheEntry<Pokemon_s>>;
+	let appCache: NSCache<NSString, CacheEntry<Dictionary<Int, [Pokemon_s]>>>;
 	
 	public let player: AudioManager;
 	
-	@Published var pokemons: [Pokemon] = [];
-	var limitGen: Int = 3;
+	var pokemons = Dictionary<Int, [Pokemon_s]>();
+	var pkmnArr: [Pokemon_s] = [];
+	var limitGen: Int = 1;
 	
 	public override init(services: StateServices_P) {
 		
@@ -38,36 +39,45 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	public func getRemoteData() async throws -> Void {
 
 		for i in 1...self.limitGen {
-
-			let res = try await self.services.pokeApiSdk.gens.getGenById(
-				id: String(i)
-			);
 			
-			for v in res.pokemon_species {
-
-				let id = URL(string: v.url)?.lastPathComponent ?? "";
-				if self.appCache[String(describing: id)] == nil {
+			if self.services.pokemonCache.object(
+				forKey: NSString(
+					string: "pokemon-cached-region"
+				)
+			) == nil {
+				
+				let res = try await self.services.pokeApiSdk.gens.getGenById( //these request could be skipped
+					id: String(i)
+				);
+				
+				for v in res.pokemon_species {
+					
+					let id = URL(string: v.url)?.lastPathComponent ?? "";
 					try await self.setRemotePokemon(id: id);
 				}
 				
-				print(self.appCache[String(describing: id)]?.getData().name as Any)
+				self.pokemons[i] = self.pkmnArr;
 			}
+		}
+		
+		self.services.pokemonCache.setObject(
+			CacheEntry(
+				status: .ready(self.pokemons),
+				value: self.pokemons,
+				key: "pokemon-cached-region"
+			),
+			forKey: "pokemon-cached-region" as NSString
+		);
+
+		if let _ = self.services.pokemonCache.object(forKey: "pokemon-cached-region" as NSString) {
+			self.pkmnArr.removeAll();
+		} else {
+			throw CacheError.emptyEntity(entityType: type(of: self.pokemons))
 		}
 	}
 
-	public func loadLocalData() async throws -> Void {
-		
-	}
-	
-	public func play() -> Void {
-		
-		self.player.initPlayer();
-	
-		let _ = self.player.play();
-	}
-	
 	private func setRemotePokemon(id: String) async throws -> Void {
-		
+
 		let res = try await self.services.pokeApiSdk.pokemons.getPokemonById(
 			pokemonId: id
 		);
@@ -83,15 +93,18 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 			abilities: [PokemonAbility(id: 1, name: "FireBolt", is_main_series: true)],
 			type: ["Fire", "Fly"]
 		);
-		
-		let cachedItem = CacheEntry<Pokemon_s>(
-			status: .ready(pokemon),
-			value: pokemon,
-			key: String(describing: pokemon.id)
-		);
-		self.appCache[String(pokemon.id)] = cachedItem;
-		
+
+		self.pkmnArr.append(pokemon);
 	}
+	
+	
+	public func play() -> Void {
+		
+		self.player.initPlayer();
+	
+		let _ = self.player.play();
+	}
+	
 	
 	private func isLimit(generation: Int) -> Bool {
 

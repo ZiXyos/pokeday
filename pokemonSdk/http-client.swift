@@ -70,6 +70,8 @@ class HttpClient {
 		) else {
 			throw RequestError.invalidUrl("invalid url");
 		}
+		urlSession.configuration.timeoutIntervalForRequest = 60;
+		urlSession.configuration.timeoutIntervalForRequest = 60;
 		
 		let req = try self.configureMethod(
 			url: url,

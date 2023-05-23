@@ -25,8 +25,7 @@ class UserFormViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		let collections = self.db.collection("Users");
 		
 		guard let accountId: String =
-				self.services.appManager.getDefault(.token) else {
-			
+			self.services.appManager.getDefault(.token) else {
 				print(AppStateError.tokenNotFound);
 				return;
 			}
@@ -49,11 +48,7 @@ class UserFormViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 			key: String(describing: user.uuid)
 		);
 
-		self.appCache[user.uuid] = cachedItem;
-		self.services.authManager.authState.isLogged = true;
-		self.services.appManager.setDefault(
-			.isAuth,
-			value: self.services.authManager.authState.isLogged
-		);
+		self.appCache.setObject(cachedItem, forKey: NSString(string: user.uuid));
+		self.services.authManager.login(token: user.uuid);
 	}
 }

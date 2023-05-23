@@ -26,7 +26,6 @@ struct LoadingView: View {
 					do {
 						try await self.viewModel.getRemoteData();
 						self.isLoading = true;
-						print("[LOG::TASK]: \(self.isLoading)");
 					} catch {
 						print(error);
 						fatalError(error.localizedDescription);
@@ -34,7 +33,11 @@ struct LoadingView: View {
 				}
 			}
 		} else {
-			Text("mmain ")
+			TabNavigationView(
+				nav: TabNavigation(
+					stateService: self.viewModel.services
+				)
+			);
 		}
 	}
 }
