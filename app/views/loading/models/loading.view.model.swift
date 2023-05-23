@@ -29,7 +29,6 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		) else {
 			fatalError("error finding files");
 		}
-		print("[LOG]: \(url)");
 	
 		self.player = AudioManager(url: url);
 		self.appCache = NSCache();
@@ -69,7 +68,9 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 			forKey: "pokemon-cached-region" as NSString
 		);
 
-		if let _ = self.services.pokemonCache.object(forKey: "pokemon-cached-region" as NSString) {
+		if let _ = self.services.pokemonCache.object(
+			forKey: "pokemon-cached-region" as NSString
+		) {
 			self.pkmnArr.removeAll();
 		} else {
 			throw CacheError.emptyEntity(entityType: type(of: self.pokemons))
@@ -81,31 +82,48 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		let res = try await self.services.pokeApiSdk.pokemons.getPokemonById(
 			pokemonId: id
 		);
+		var type: [String] = [];
 
-		let pokemon = Pokemon_s(
-			id: res.id,
-			name: res.name,
-			base_experience: res.base_experience,
-			height: res.height,
-			is_default: res.is_default,
-			order: true,
-			weight: res.weight,
-			abilities: [PokemonAbility(id: 1, name: "FireBolt", is_main_series: true)],
-			type: ["Fire", "Fly"]
-		);
+		for v in res.types {
+			type.append(v.type.name);
+		}
 
-		self.pkmnArr.append(pokemon);
+		do {
+			let jsonData = try JSON.encoder.encode(res.sprites);
+			let sprites = try JSONDecoder().decode(PokemonSprites.self, from: jsonData)
+		
+		
+			let pokemon = Pokemon_s(
+				id: res.id,
+				name: res.name,
+				base_experience: res.base_experience,
+				height: res.height,
+				is_default: res.is_default,
+				order: true,
+				weight: res.weight,
+				abilities: [PokemonAbility(id: 1, name: "FireBolt", is_main_series: true)],
+				type: type,
+				sprites: sprites
+			);
+
+			self.pkmnArr.append(pokemon);
+		} catch let error {
+			print(error.localizedDescription);
+		}
 	}
-	
 	
 	public func play() -> Void {
 		
 		self.player.initPlayer();
-	
 		let _ = self.player.play();
 	}
-	
-	
+
+	public func stop() -> Void {
+		if self.player.isPlaying() {
+			self.player.stop();
+		}
+	}
+
 	private func isLimit(generation: Int) -> Bool {
 
 		if limitGen == generation {

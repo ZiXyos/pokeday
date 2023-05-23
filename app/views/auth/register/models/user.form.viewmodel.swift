@@ -41,7 +41,6 @@ class UserFormViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		doc.setData([
 			accountId : user.dictionary
 		]);
-
 		let cachedItem = CacheEntry<UserDocument>(
 			status: .ready(user),
 			value: user,
@@ -49,6 +48,7 @@ class UserFormViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		);
 
 		self.appCache.setObject(cachedItem, forKey: NSString(string: user.uuid));
+		cachedItem.saveToDisk(withName: "user");
 		self.services.authManager.login(token: user.uuid);
 	}
 }

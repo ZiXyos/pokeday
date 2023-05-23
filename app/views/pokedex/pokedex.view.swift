@@ -15,7 +15,7 @@ struct PokedexView: View {
 	
 	public init(viewModel: PokedexViewModel) {
 		self.viewModel = viewModel;
-		print("[LOG::KEY]: \(self.viewModel.pkms.keys)");
+		print("[LOG::REGION:ENABLED]: \(self.viewModel.pkms.keys)");
 	}
 	
 	var body: some View {
@@ -32,7 +32,7 @@ struct PokedexView: View {
 										name: v.name,
 										type: v.type,
 										thumb: URL(
-											string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/6.png"
+											string: v.sprites.front_default
 										)!
 									)
 								}

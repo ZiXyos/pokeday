@@ -29,8 +29,8 @@ struct CardComponent: View {
 
 				HStack {
 					VStack {
-						ForEach(["type1", "type2"], id: \.self) { str in
-								CardTypeText(data: str)
+						ForEach(self.type, id: \.self) { str in
+							CardTypeText(data: str)
 						}
 					}
 	

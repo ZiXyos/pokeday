@@ -19,12 +19,6 @@ class PokedexViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 			forKey: "pokemon-cached-region" as NSString
 		)  {
 			self.pkms = data.getData();
-			for (k, v) in self.pkms {
-				print("[Region]: \(k)");
-				for pkm in v {
-					print("\t[Pokemon]: \(pkm.name)");
-				}
-			}
 		}
 	}
 }

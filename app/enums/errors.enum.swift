@@ -21,3 +21,7 @@ enum CacheError<T>: Error {
 
 	case emptyEntity(entityType: T.Type);
 }
+
+enum FileError: Error {
+	case fileDoNotExist(fname: String);
+}

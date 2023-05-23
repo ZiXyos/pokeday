@@ -25,12 +25,12 @@ public struct PokemonSpritesDto: Codable {
 	
 	public let front_default: String;
 	public let front_shiny: String;
-	//public let front_female: String;
-	//public let front_shiny_female: String;
+	public var front_female: String? = nil;
+	public var front_shiny_female: String? = nil;
 	public let back_default: String;
 	public let back_shiny: String;
-	//public let back_female: String;
-	//public let back_shiny_female: String;
+	public var back_female: String? = nil;
+	public var back_shiny_female: String? = nil;
 }
 
 public struct TypeResDto: Codable {
@@ -62,7 +62,7 @@ public struct PokemonDto: Codable, Identifiable {
 	public var weight: Int;
 	// public var abilities: [PokemonAbility];
 	//public let forms: [String];
-	//public let types: [PokemonTypeDto];
+	public let types: [PokemonTypeDto];
 	public let sprites: PokemonSpritesDto;
 }
 

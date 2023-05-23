@@ -27,17 +27,19 @@ struct LoadingView: View {
 						try await self.viewModel.getRemoteData();
 						self.isLoading = true;
 					} catch {
-						print(error);
 						fatalError(error.localizedDescription);
 					}
 				}
 			}
 		} else {
+
 			TabNavigationView(
 				nav: TabNavigation(
 					stateService: self.viewModel.services
 				)
-			);
+			).task {
+				self.viewModel.stop();
+			};
 		}
 	}
 }
