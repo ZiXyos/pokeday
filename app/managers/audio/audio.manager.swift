@@ -30,9 +30,16 @@ class AudioManager {
 	}
 	
 	public func play() -> Bool {
-		self.player.setVolume(100.00, fadeDuration: 0);
-		print("\(player.duration)");
+		self.player.setVolume(50.00, fadeDuration: 0);
 		return self.player.play();
+	}
+	
+	public func stop() {
+		self.player.stop();
+	}
+	
+	public func isPlaying() -> Bool {
+		return self.player.isPlaying;
 	}
 	
 	public func initPlayer() {

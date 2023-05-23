@@ -69,7 +69,9 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 			forKey: "pokemon-cached-region" as NSString
 		);
 
-		if let _ = self.services.pokemonCache.object(forKey: "pokemon-cached-region" as NSString) {
+		if let _ = self.services.pokemonCache.object(
+			forKey: "pokemon-cached-region" as NSString
+		) {
 			self.pkmnArr.removeAll();
 		} else {
 			throw CacheError.emptyEntity(entityType: type(of: self.pokemons))
@@ -101,8 +103,12 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	public func play() -> Void {
 		
 		self.player.initPlayer();
-	
 		let _ = self.player.play();
+	}
+	public func stop() -> Void {
+		if self.player.isPlaying() {
+			self.player.stop();
+		}
 	}
 	
 	

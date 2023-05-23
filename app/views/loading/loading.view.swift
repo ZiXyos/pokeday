@@ -33,11 +33,14 @@ struct LoadingView: View {
 				}
 			}
 		} else {
+			
 			TabNavigationView(
 				nav: TabNavigation(
 					stateService: self.viewModel.services
 				)
-			);
+			).task {
+				self.viewModel.stop();
+			};
 		}
 	}
 }
