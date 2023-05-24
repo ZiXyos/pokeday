@@ -11,6 +11,8 @@
 		1009E36D29F9235900C6A706 /* pills.type.button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1009E36C29F9235900C6A706 /* pills.type.button.swift */; };
 		1009E37129F9257C00C6A706 /* leaf_icon_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 1009E37029F9255800C6A706 /* leaf_icon_full.png */; };
 		1009E37329F9268D00C6A706 /* pills.pokemon.button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1009E37229F9268D00C6A706 /* pills.pokemon.button.swift */; };
+		101B87612A1DDFD300368FCB /* profil.view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101B87602A1DDFD300368FCB /* profil.view.swift */; };
+		101B87642A1DDFEA00368FCB /* profil.view.model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101B87632A1DDFEA00368FCB /* profil.view.model.swift */; };
 		1026E82D29D290B100B271FD /* loading.view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1026E82C29D290B100B271FD /* loading.view.swift */; };
 		1026E83029D292DB00B271FD /* loading.view.model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1026E82F29D292DB00B271FD /* loading.view.model.swift */; };
 		1026E84029D436EF00B271FD /* user.entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1026E83F29D436EF00B271FD /* user.entity.swift */; };
@@ -75,6 +77,8 @@
 		1009E36F29F9255800C6A706 /* leaf_icon_unfull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaf_icon_unfull.png; sourceTree = "<group>"; };
 		1009E37029F9255800C6A706 /* leaf_icon_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaf_icon_full.png; sourceTree = "<group>"; };
 		1009E37229F9268D00C6A706 /* pills.pokemon.button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pills.pokemon.button.swift; sourceTree = "<group>"; };
+		101B87602A1DDFD300368FCB /* profil.view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profil.view.swift; sourceTree = "<group>"; };
+		101B87632A1DDFEA00368FCB /* profil.view.model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profil.view.model.swift; sourceTree = "<group>"; };
 		1026E82C29D290B100B271FD /* loading.view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loading.view.swift; sourceTree = "<group>"; };
 		1026E82F29D292DB00B271FD /* loading.view.model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loading.view.model.swift; sourceTree = "<group>"; };
 		1026E83F29D436EF00B271FD /* user.entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.entity.swift; sourceTree = "<group>"; };
@@ -165,6 +169,23 @@
 			);
 			name = icons;
 			path = app/src/assets/type/grass/icons;
+			sourceTree = "<group>";
+		};
+		101B875F2A1DBE3F00368FCB /* profil */ = {
+			isa = PBXGroup;
+			children = (
+				101B87622A1DDFD800368FCB /* model */,
+				101B87602A1DDFD300368FCB /* profil.view.swift */,
+			);
+			path = profil;
+			sourceTree = "<group>";
+		};
+		101B87622A1DDFD800368FCB /* model */ = {
+			isa = PBXGroup;
+			children = (
+				101B87632A1DDFEA00368FCB /* profil.view.model.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		1026E82B29D2909B00B271FD /* loading */ = {
@@ -491,6 +512,7 @@
 		107E330429CAAF1D0059F22B /* views */ = {
 			isa = PBXGroup;
 			children = (
+				101B875F2A1DBE3F00368FCB /* profil */,
 				1026E82B29D2909B00B271FD /* loading */,
 				104DF14B29CB565400D97446 /* pokedex */,
 				107E330629CAAF510059F22B /* auth */,
@@ -695,9 +717,11 @@
 				107E331929CAE3890059F22B /* auth.state.swift in Sources */,
 				1063097C29F00C7B0050A175 /* pokemon.view.swift in Sources */,
 				103ECEF729CCBB270095AE78 /* pokemon.sprites.type.swift in Sources */,
+				101B87612A1DDFD300368FCB /* profil.view.swift in Sources */,
 				1026E83029D292DB00B271FD /* loading.view.model.swift in Sources */,
 				104DF15529CB5C7100D97446 /* pokedex.card.component.swift in Sources */,
 				1026E84229D436FA00B271FD /* pokemon.entity.swift in Sources */,
+				101B87642A1DDFEA00368FCB /* profil.view.model.swift in Sources */,
 				1063098129F685EE0050A175 /* header.pokemon.swift in Sources */,
 				10D44AF12A0C00B700C35003 /* errors.enum.swift in Sources */,
 				107E330D29CAB0380059F22B /* login.view.model.swift in Sources */,

@@ -25,11 +25,13 @@ class TabNavigation: ObservableObject {
 	@ViewBuilder func pokedexScreen() -> some View {
 		PokedexView(
 			viewModel: PokedexViewModel(services: self.stateService)
-		)
+		);
 	}
 	
 	@ViewBuilder func profilScreen() -> some View {
-		Text("profil");
+		ProfileView(
+			viewModel: ProfileViewModel(services: self.stateService)
+		);
 	}
 }
 

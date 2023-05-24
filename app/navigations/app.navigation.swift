@@ -20,7 +20,6 @@ class AppNavigation: ObservableObject {
 	
 	@Published var screen: AppNavigationScreen = .auth;
 	private var anyCancellable = Set<AnyCancellable>();
-	private var appCache: NSCache<NSString, CacheEntry<String>> = NSCache();
 	private var appServices: StateServices_P;
 	
 	lazy private var authNav: AuthNavigation = {
@@ -42,6 +41,7 @@ class AppNavigation: ObservableObject {
 		switch res {
 			case .success(let user):
 				self.storePersistentUser(user: user);
+				self.appServices.authManager.login(token: user.uuid);
 			case .failure(_):
 				break;
 		}
@@ -75,11 +75,7 @@ class AppNavigation: ObservableObject {
 		
 		LoadingView(
 			viewModel: LoadingViewModel(
-				services: AppState(
-					pokeSdkClient: PokeSdkClient(
-						clientOptions: ClientOptions()
-					)
-				)
+				services: self.appServices
 			)
 		);
 	}
@@ -98,11 +94,6 @@ extension AppNavigation {
 			key: String(describing: user.uuid)
 		);
 		self.appServices.userCache.setObject(cachedItem, forKey: user.uuid as NSString);
-		self.appServices.authManager.authState.isLogged.toggle();
-		self.appServices.appManager.setDefault(
-			.isAuth,
-			value: self.appServices.authManager.authState.isLogged
-		);
 	}
 }
 

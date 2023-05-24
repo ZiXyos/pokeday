@@ -65,7 +65,6 @@ class PokemonRessources {
 		}
 		
 		guard let result = res else {
-			print("err")
 			throw CancellationError()
 		}
 		

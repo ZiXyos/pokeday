@@ -17,29 +17,42 @@ protocol AuthStateManager_P {
 
 struct AuthStateManager: AuthStateManager_P {
 	
-	var authState: AuthState = AuthState();
+	var authState: AuthState;
 	private var appStateManager: AppStateManager;
 	
-	public init(appManager: AppStateManager) {
+	public init(
+		authState: AuthState,
+		appManager: AppStateManager
+	) {
 		self.appStateManager = appManager;
+		self.authState = authState;
 	}
 	
 	public func login(token: String) {
+		
+		self.authState.usertoken = token;
+		
+		self.appStateManager.setDefault(
+			.token,
+			value: self.authState.usertoken ?? token
+		);
+		
+		guard let test = self.appStateManager.getDefault(.token) else {
+			return;
+		}
+		
 		self.authState.isLogged.toggle();
 		self.appStateManager.setDefault(
 			.isAuth,
 			value: self.authState.isLogged
 		);
-		
-		self.authState.usertoken = token;
-		self.appStateManager.setDefault(
-			.token,
-			value: self.authState.usertoken!
-		);
 	}
 	
 	public func logout() {
+
+		removeCacheOndisk(withName: "user");
 		self.authState.isLogged.toggle();
+		self.appStateManager.setDefault(.isAuth, value: self.authState.isLogged);
 	}
 	
 	private func initValues() -> Void {

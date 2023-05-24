@@ -12,6 +12,7 @@ protocol StateServices_P {
 	var appManager: AppStateManager { get };
 	var authManager: AuthStateManager { get set };
 	var pokeApiSdk: PokeSdkClient { get };
+	var authState: AuthState { get set };
 	var pokemonCache: NSCache<
 		NSString,
 		CacheEntry<Dictionary<Int, [Pokemon_s]>>
@@ -26,6 +27,7 @@ class AppState: StateServices_P {
 	
 	var appManager: AppStateManager;
 	var authManager: AuthStateManager;
+	var authState: AuthState;
 	var pokeApiSdk: PokeSdkClient;
 	var pokemonCache: NSCache<
 		NSString,
@@ -37,7 +39,11 @@ class AppState: StateServices_P {
 		
 		self.appManager = AppStateManager();
 		self.pokeApiSdk = pokeSdkClient;
-		self.authManager = AuthStateManager(appManager: self.appManager);
+		self.authState = AuthState();
+		self.authManager = AuthStateManager(
+			authState: self.authState,
+			appManager: self.appManager
+		);
 		self.pokemonCache = NSCache();
 		self.userCache = NSCache();
 	}

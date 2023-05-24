@@ -108,6 +108,28 @@ extension CacheEntry where T: Codable {
 			return .failure(CacheError.emptyEntity(entityType: T.self));
 		}
 	}
+	
+	func removeOndisk(
+		withName fname: String,
+		using fManager: FileManager = .default
+	) -> Void {
+		
+		let folderURLs = fManager.urls(
+			for: .cachesDirectory,
+			in: .userDomainMask
+		);
+		let fpath = folderURLs[0].appendingPathComponent(
+			"\(fname).cache"
+		);
+		
+		do {
+			try fManager.removeItem(atPath: fpath.path())
+		} catch let error {
+			print(error.localizedDescription);
+			return;
+		}
+		
+	}
 }
 
 enum CacheStatus {
@@ -203,5 +225,26 @@ func getCacheOnDiskValue<T: Codable>(
 	} catch let error {
 		print(error.localizedDescription);
 		return .failure(FileError.fileDoNotExist(fname: fname));
+	}
+}
+
+func removeCacheOndisk(
+	withName fname: String,
+	using fManager: FileManager = .default
+) -> Void {
+	
+	let folderURLs = fManager.urls(
+		for: .cachesDirectory,
+		in: .userDomainMask
+	);
+	let fpath = folderURLs[0].appendingPathComponent(
+		"\(fname).cache"
+	);
+	
+	do {
+		try fManager.removeItem(atPath: fpath.path())
+	} catch let error {
+		print(error.localizedDescription);
+		return;
 	}
 }
