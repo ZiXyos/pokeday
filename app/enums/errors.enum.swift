@@ -24,4 +24,5 @@ enum CacheError<T>: Error {
 
 enum FileError: Error {
 	case fileDoNotExist(fname: String);
+	case imageDoNotExiste(imageName: String);
 }

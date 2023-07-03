@@ -30,7 +30,7 @@ class AudioManager {
 	}
 	
 	public func play() -> Bool {
-		self.player.setVolume(50.00, fadeDuration: 0);
+		self.player.setVolume(1.00, fadeDuration: 0);
 		return self.player.play();
 	}
 	

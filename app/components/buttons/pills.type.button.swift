@@ -55,20 +55,20 @@ struct PillsTypeButtonS: View {
 			ZStack {
 				Ellipse()
 				.fill(Color.white)
-				.frame(width: 28, height: 28)
+				.frame(width: 28/2, height: 28/2)
 				Image(
 					uiImage: getImage(
 						name: "leaf_icon_full"
 					)!
 				).resizable()
-				.frame(width: 18, height: 18)
+				.frame(width: 18/2, height: 18/2)
 			}
-			.frame(width: 28, height: 28)
+			.frame(width: 28/2, height: 28/2)
 
 			Text(self.type).fontWeight(.medium)
 			.font(.subheadline)
-		}.padding(.horizontal, 14)
-		.padding(.vertical, 4)
+		}.padding(.horizontal, 14/2)
+		.padding(.vertical, 4/2)
 		.background(Color(red: 0.39, green: 0.74, blue: 0.35))
 		.cornerRadius(67)
 	}
@@ -76,10 +76,8 @@ struct PillsTypeButtonS: View {
 
 struct pills_button_Previews: PreviewProvider {
     static var previews: some View {
-		VStack {
-			PillsTypeButton(type: "Grass");
-			Spacer()
-			PillsTypeButtonS(type: "");
+		HStack {
+			PillsTypeButtonS(type: "Grass");
 		}
     }
 }

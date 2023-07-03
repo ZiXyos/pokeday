@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PokedexView: View {
 	
-	private let gridItems = [GridItem(.flexible()), GridItem(.flexible())]
+	private let gridItems = [GridItem(.flexible())]
 	private let viewModel: PokedexViewModel;
 
 	
@@ -25,10 +25,10 @@ struct PokedexView: View {
 					ScrollView {
 						LazyVGrid(
 							columns: gridItems,
-							spacing: 25,
+							spacing: 10,
 							content: {
 								ForEach(pkms, id: \.id) { v in
-									CardComponent(
+									PokemonCard(
 										name: v.name,
 										type: v.type,
 										thumb: URL(
@@ -40,7 +40,10 @@ struct PokedexView: View {
 						)
 					}
 				} else {
-					Text("LOADING")
+					Text("wtf this case").onAppear {
+						Task {
+						}
+					}
 				}
 			}
 		}

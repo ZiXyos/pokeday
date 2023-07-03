@@ -19,7 +19,7 @@ class TabNavigation: ObservableObject {
 	
 	@ViewBuilder func playgroundScreen() -> some View {
 		
-		Text("catch ur pokemon here")
+		PlaygroundView();
 	}
 	
 	@ViewBuilder func pokedexScreen() -> some View {

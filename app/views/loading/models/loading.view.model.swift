@@ -21,6 +21,8 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	var pkmnArr: [Pokemon_s] = [];
 	var limitGen: Int = 1;
 	
+	@Published var bgImage = UIImage();
+	
 	public override init(services: StateServices_P) {
 		
 		guard let url = Bundle.main.url(
@@ -33,6 +35,9 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		self.player = AudioManager(url: url);
 		self.appCache = NSCache();
 		super.init(services: services);
+		
+		self.bgImage = self.setBgImage(name: "loading-bg");
+		
 	}
 	
 	public func getRemoteData() async throws -> Void {
@@ -50,7 +55,6 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 				);
 				
 				for v in res.pokemon_species {
-					
 					let id = URL(string: v.url)?.lastPathComponent ?? "";
 					try await self.setRemotePokemon(id: id);
 				}
@@ -112,13 +116,13 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		}
 	}
 	
-	public func play() -> Void {
+	public func playMusic() -> Void {
 		
 		self.player.initPlayer();
 		let _ = self.player.play();
 	}
 
-	public func stop() -> Void {
+	public func stopMusic() -> Void {
 		if self.player.isPlaying() {
 			self.player.stop();
 		}
@@ -134,5 +138,13 @@ class LoadingViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	
 	private func setLimitGen(gen: Int) -> Void {
 		self.limitGen = gen;
+	}
+	
+	public func setBgImage(name: String) -> UIImage {
+
+		guard let bgImage = getImage(name: name) else {
+			fatalError(FileError.imageDoNotExiste(imageName: name).localizedDescription);
+		}
+		return bgImage;
 	}
 }

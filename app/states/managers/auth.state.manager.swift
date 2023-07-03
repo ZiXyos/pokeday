@@ -31,15 +31,10 @@ struct AuthStateManager: AuthStateManager_P {
 	public func login(token: String) {
 		
 		self.authState.usertoken = token;
-		
 		self.appStateManager.setDefault(
 			.token,
 			value: self.authState.usertoken ?? token
 		);
-		
-		guard let test = self.appStateManager.getDefault(.token) else {
-			return;
-		}
 		
 		self.authState.isLogged.toggle();
 		self.appStateManager.setDefault(

@@ -43,7 +43,6 @@ class PokemonRessources {
 				URLQueryItem(name: "offset", value: offset)
 			]
 		);
-		
 		return res;
 	}
 	
@@ -67,7 +66,6 @@ class PokemonRessources {
 		guard let result = res else {
 			throw CancellationError()
 		}
-		
 		return result;
 	}
 	
@@ -77,7 +75,6 @@ class PokemonRessources {
 			route: "type/" + pokemonTypeId,
 			params: nil
 		);
-		
 		return res;
 	}
 	
@@ -87,7 +84,6 @@ class PokemonRessources {
 			route: "type/" + pokemonTypeName,
 			params: nil
 		);
-		
 		return res;
 	}
 }

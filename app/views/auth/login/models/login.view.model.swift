@@ -10,7 +10,6 @@ import Combine;
 import FirebaseAuth;
 import FirebaseFirestore;
 
-
 class LoginViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 	
 	let db: Firestore = Firestore.firestore();
@@ -38,7 +37,13 @@ class LoginViewModel: TemplateViewModel<StateServices_P>, ObservableObject {
 		password: String
 	) -> Void {
 		
-		print("[LOG]: Logging In with Email !!!");
+		Auth.auth().signIn(
+			withEmail: email,
+			password: password
+		) { [weak self] authResult, error in
+			guard let strongSelf = self else { return }
+			strongSelf.services.authManager.login(token: email);
+		}
 	}
 	
 	

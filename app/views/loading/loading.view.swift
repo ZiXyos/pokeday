@@ -5,13 +5,13 @@
 //  Created by Ktchoumh on 3/28/23.
 //
 
-import SwiftUI
+import SwiftUI;
 
 struct LoadingView: View {
     
 	@State var isLoading = false;
 	private let viewModel: LoadingViewModel;
-	
+
 	public init(viewModel: LoadingViewModel) {
 
 		self.viewModel = viewModel;
@@ -19,9 +19,18 @@ struct LoadingView: View {
 	
 	var body: some View {
 		if !isLoading {
-			Button("TODO Loader") {
-				let _ = self.viewModel.play();
+			ZStack() {
+				GeometryReader { geo in
+					Image(uiImage: self.viewModel.bgImage)
+						.resizable(capInsets: .init())
+						.frame(
+							width: geo.size.width,
+							height: geo.size.height,
+							alignment: .center
+						).scaleEffect(1.75)
+				}.edgesIgnoringSafeArea(.all)
 			}.onAppear {
+				self.viewModel.playMusic();
 				Task {
 					do {
 						try await self.viewModel.getRemoteData();
@@ -32,13 +41,12 @@ struct LoadingView: View {
 				}
 			}
 		} else {
-
 			TabNavigationView(
 				nav: TabNavigation(
 					stateService: self.viewModel.services
 				)
 			).task {
-				self.viewModel.stop();
+				self.viewModel.stopMusic();
 			};
 		}
 	}
